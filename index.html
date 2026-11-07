@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" id="themeColor" content="#0b1220">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <link rel="icon" href="assets/favicon.png" type="image/png" sizes="32x32">
+  <link rel="shortcut icon" href="assets/favicon.ico">
+  <title>Generador de exámenes Moodle · Cuaderno de prácticas</title>
+  <script>
+    (function () {
+      var theme = 'dark';
+      try {
+        theme = localStorage.getItem('moodle-exam-builder-theme') || 'dark';
+      } catch (error) {
+        theme = 'dark';
+      }
+      document.documentElement.setAttribute('data-theme', theme === 'light' ? 'light' : 'dark');
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">M</div>
+      <div class="brand-text">
+        <h1>Generador de exámenes Moodle</h1>
+        <p>De un cuaderno de prácticas HTML a un XML de preguntas para Moodle</p>
+      </div>
+    </div>
+    <div class="top-actions">
+      <span class="save-status" id="saveStatus" aria-live="polite">Sin cambios</span>
+      <button class="btn btn-ghost" id="btnTheme" type="button" title="Cambiar entre tema oscuro y claro" aria-pressed="true">
+        <span aria-hidden="true" id="themeIcon">☀</span> <span id="themeLabel">Tema claro</span>
+      </button>
+      <button class="btn btn-ghost" id="btnImportJson" type="button" title="Importar todo el examen desde JSON">
+        <span aria-hidden="true">↥</span> Importar JSON
+      </button>
+      <button class="btn btn-ghost" id="btnExportJson" type="button" title="Exportar todo el examen a JSON">
+        <span aria-hidden="true">↧</span> Exportar JSON
+      </button>
+      <button class="btn btn-ghost btn-danger-ghost" id="btnReset" type="button" title="Borrar los datos guardados">
+        Reiniciar
+      </button>
+    </div>
+  </header>
+
+  <main class="shell" id="main">
+    <div class="restore-banner" id="restoreBanner" hidden>
+      <span>Se ha recuperado la última sesión guardada en este navegador.</span>
+      <button type="button" class="btn btn-small btn-ghost" id="btnDismissRestore">Entendido</button>
+    </div>
+
+    <nav class="tabs" aria-label="Pasos del generador">
+      <button class="tab is-active" type="button" data-tab="source" id="tabBtnSource">
+        <span class="tab-num">1</span>
+        <span>Fuente</span>
+      </button>
+      <button class="tab" type="button" data-tab="exam" id="tabBtnExam">
+        <span class="tab-num">2</span>
+        <span>Examen</span>
+      </button>
+      <button class="tab" type="button" data-tab="bank" id="tabBtnBank">
+        <span class="tab-num">3</span>
+        <span>Preguntas</span>
+        <span class="tab-badge" id="bankTabBadge">0</span>
+      </button>
+      <button class="tab" type="button" data-tab="export" id="tabBtnExport">
+        <span class="tab-num">4</span>
+        <span>Exportar</span>
+        <span class="tab-badge" id="exportTabBadge">0</span>
+      </button>
+    </nav>
+
+    <!-- ===================== FUENTE ===================== -->
+    <section class="panel" id="panel-source" data-panel="source" aria-labelledby="sourceTitle">
+      <div class="panel-heading">
+        <div>
+          <span class="eyebrow">Paso 1</span>
+          <h2 id="sourceTitle">Fuente de las prácticas</h2>
+          <p class="muted">Importa un cuaderno HTML con el mismo formato que <code>practicas.html</code>. La app detecta prácticas, criterios de evaluación, lecturas, pasos, materiales, puntos de control y rúbricas.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Seleccionar archivo HTML de prácticas">
+            <div class="dropzone-icon" aria-hidden="true">⇪</div>
+            <h3>Arrastra aquí tu cuaderno de prácticas</h3>
+            <p class="muted">o pulsa para seleccionar un archivo <strong>.html</strong></p>
+            <span class="btn btn-primary btn-small">Seleccionar archivo</span>
+            <p class="hint">El archivo no se sube a ningún servidor: todo se procesa en tu navegador.</p>
+          </div>
+          <input type="file" id="sourceFile" accept=".html,.htm,text/html" hidden>
+          <div class="row-between mt-16">
+            <button type="button" class="btn btn-ghost btn-small" id="btnSampleSource">Cargar <code>practicas.html</code> de ejemplo</button>
+            <span class="hint" id="sourceFileName"></span>
+          </div>
+        </div>
+
+        <div class="card source-summary" id="sourceSummary">
+          <div class="empty-state">
+            <div class="empty-icon" aria-hidden="true">📄</div>
+            <h3>Todavía no hay fuente</h3>
+            <p class="muted">Importa un cuaderno de prácticas para generar el banco de preguntas y configurar el examen.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="sourceDetails" class="mt-24" hidden></div>
+    </section>
+
+    <!-- ===================== EXAMEN ===================== -->
+    <section class="panel" id="panel-exam" data-panel="exam" aria-labelledby="examTitle" hidden>
+      <div class="panel-heading">
+        <div>
+          <span class="eyebrow">Paso 2</span>
+          <h2 id="examTitle">Configuración del examen</h2>
+          <p class="muted">Indica cuántas preguntas quieres, qué criterios de evaluación se van a evaluar y qué tipos de pregunta pueden entrar.</p>
+        </div>
+      </div>
+
+      <div class="grid exam-layout">
+        <div class="card" id="examFormCard"></div>
+        <aside class="card exam-summary" id="examSummaryCard"></aside>
+      </div>
+
+      <div class="card mt-24" id="examSelectionCard"></div>
+    </section>
+
+    <!-- ===================== PREGUNTAS ===================== -->
+    <section class="panel" id="panel-bank" data-panel="bank" aria-labelledby="bankTitle" hidden>
+      <div class="panel-heading">
+        <div>
+          <span class="eyebrow">Paso 3</span>
+          <h2 id="bankTitle">Banco de preguntas</h2>
+          <p class="muted">Revisa, añade, edita, duplica o elimina preguntas. Marca las que quieras incluir en el examen.</p>
+        </div>
+        <div class="panel-actions">
+          <button class="btn btn-primary" type="button" id="btnNewQuestion">＋ Nueva pregunta</button>
+          <button class="btn btn-danger" type="button" id="btnDeleteUnselected" data-action="delete-unselected">🗑 Borrar no seleccionadas</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="bank-toolbar" id="bankToolbar"></div>
+        <div class="bank-meta" id="bankMeta"></div>
+        <div id="bankList" class="bank-list"></div>
+      </div>
+    </section>
+
+    <!-- ===================== EXPORTAR ===================== -->
+    <section class="panel" id="panel-export" data-panel="export" aria-labelledby="exportTitle" hidden>
+      <div class="panel-heading">
+        <div>
+          <span class="eyebrow">Paso 4</span>
+          <h2 id="exportTitle">Exportar</h2>
+          <p class="muted">Descarga el XML compatible con la importación de preguntas de Moodle o guarda todo el examen en JSON.</p>
+        </div>
+      </div>
+      <div class="grid grid-2">
+        <div class="card export-card">
+          <div class="export-icon json" aria-hidden="true">JSON</div>
+          <h3>Proyecto completo</h3>
+          <p class="muted">Guarda o recupera el examen completo: fuente analizada, configuración, banco de preguntas y selección.</p>
+          <div class="json-note">
+            <strong>Importación total</strong>
+            <span>El JSON permite continuar el trabajo en otro equipo o hacer copias de seguridad.</span>
+          </div>
+          <div class="actions wrap">
+            <button class="btn btn-primary" type="button" id="btnDownloadJson">Descargar JSON</button>
+            <button class="btn btn-ghost" type="button" id="btnImportJson2">Importar JSON</button>
+          </div>
+          <div class="quality-box" id="qualityBox"></div>
+        </div>
+
+        <div class="card export-card">
+          <div class="export-icon" aria-hidden="true">XML</div>
+          <h3>Preguntas para Moodle</h3>
+          <p class="muted">Archivo <code>.xml</code> con la categoría y todas las preguntas seleccionadas, listo para <em>Banco de preguntas → Importar</em>.</p>
+          <div id="exportSummary" class="export-summary"></div>
+          <label class="field">
+            <span>Nombre del archivo</span>
+            <div class="input-suffix">
+              <input type="text" id="xmlFileName" placeholder="examen-moodle">
+              <span>.xml</span>
+            </div>
+          </label>
+          <div class="actions wrap">
+            <button class="btn btn-primary" type="button" id="btnDownloadXml">Descargar XML</button>
+            <button class="btn btn-ghost" type="button" id="btnPreviewXml">Actualizar vista previa</button>
+          </div>
+          <details class="help">
+            <summary>¿Cómo se importa en Moodle?</summary>
+            <ol>
+              <li>En tu curso, entra en el cuestionario y abre <strong>Banco de preguntas</strong>.</li>
+              <li>Pulsa <strong>Importar</strong> y elige el formato <strong>XML de Moodle</strong>.</li>
+              <li>Sube el archivo generado y confirma la importación.</li>
+              <li>Las preguntas aparecerán en la categoría indicada del banco.</li>
+            </ol>
+          </details>
+        </div>
+      </div>
+
+      <div class="card mt-24">
+        <div class="row-between">
+          <div>
+            <h3 class="mt-0">Vista previa del XML</h3>
+            <p class="muted mb-0">Se muestran los primeros caracteres. El archivo descargado incluye todas las preguntas.</p>
+          </div>
+          <button class="btn btn-small btn-ghost" type="button" id="btnCopyXml">Copiar XML</button>
+        </div>
+        <pre class="xml-preview" id="xmlPreview"><code>Genera el examen y pulsa «Actualizar vista previa».</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>Funciona sin conexión · Los datos se guardan solo en este navegador.</span>
+    <span>Formato de salida: Moodle XML · Formato de proyecto: JSON</span>
+  </footer>
+
+  <!-- Modal de edición de pregunta -->
+  <div class="modal" id="questionModal" hidden>
+    <div class="modal-backdrop" data-close-modal="true"></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <header class="modal-head">
+        <div>
+          <span class="eyebrow" id="modalEyebrow">Pregunta</span>
+          <h2 id="modalTitle">Editar pregunta</h2>
+        </div>
+        <button class="icon-btn" type="button" id="btnCloseModal" aria-label="Cerrar">×</button>
+      </header>
+      <form id="questionForm">
+        <div class="modal-body" id="modalBody"></div>
+        <footer class="modal-foot">
+          <span class="form-error" id="modalError" role="alert"></span>
+          <div class="actions">
+            <button class="btn btn-ghost" type="button" id="btnCancelModal">Cancelar</button>
+            <button class="btn btn-primary" type="submit">Guardar pregunta</button>
+          </div>
+        </footer>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="false"></div>
+
+  <input type="file" id="jsonFile" accept=".json,application/json" hidden>
+  <input type="file" id="curriculumFile" accept=".json,application/json" hidden>
+
+  <script src="js/util.js"></script>
+  <script src="js/parser.js"></script>
+  <script src="js/generator.js"></script>
+  <script src="js/moodle-xml.js"></script>
+  <script src="js/curriculum.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UD1 · Cuaderno de prácticas · Gestores de contenidos (CMS) — Aplicaciones Web</title>
+<style>
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:#fdf7f0;}
+  details > summary::-webkit-details-marker{display:none;}
+  details > summary{list-style:none;}
+  details > summary::marker{content:"";}
+  table{border-collapse:collapse;}
+  pre{white-space:pre-wrap;word-wrap:break-word;}
+</style>
+</head>
+<body>
+
+<div style="max-width:1040px;margin:0 auto;padding:0 18px 70px;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#12263a;line-height:1.62;box-sizing:border-box;">
+
+<!-- ══════════════ CABECERA ══════════════ -->
+<header style="background:linear-gradient(135deg,#FB8C00,#d97700);color:#fff;padding:38px 32px;border-radius:0 0 20px 20px;box-shadow:0 10px 26px rgba(251,140,0,.28);">
+  <span style="display:inline-block;background:rgba(255,255,255,0.22);color:#fff;font-weight:800;letter-spacing:.5px;padding:6px 16px;border-radius:999px;font-size:.78rem;margin-bottom:14px;">📘 Cuaderno de prácticas · UD1</span>
+  <h1 style="font-size:1.7rem;line-height:1.25;margin:0 0 10px;font-weight:800;color:#fff;">Gestores de contenidos (CMS)</h1>
+  <p style="font-size:0.98rem;color:#fff5e6;margin:0 0 8px;max-width:820px;"><strong>Aplicaciones Web</strong> · Código 0228 · 2º SMR · Grado Medio</p>
+  <p style="font-size:0.92rem;color:#fff5e6;margin:0 0 18px;max-width:820px;">RA1. Instala gestores de contenidos, identificando sus aplicaciones y configurándolos según requerimientos. Criterios de evaluación a) a k).</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;border-top:1px solid rgba(255,255,255,.22);padding-top:16px;">
+    <div style="font-size:.8rem;color:#fff5e6;"><strong style="display:block;color:#fff;font-size:.88rem;font-weight:700;">IES Vega del Guadalete</strong>La Barca de la Florida (Cádiz)</div>
+    <div style="font-size:.8rem;color:#fff5e6;"><strong style="display:block;color:#fff;font-size:.88rem;font-weight:700;">Curso 2026–2027</strong>Primer trimestre</div>
+    <div style="font-size:.8rem;color:#fff5e6;"><strong style="display:block;color:#fff;font-size:.88rem;font-weight:700;">Dpto. Informática</strong>Jose Antonio Sánchez Bedoya</div>
+    <div style="font-size:.8rem;color:#fff5e6;"><strong style="display:block;color:#fff;font-size:.88rem;font-weight:700;">Evaluación</strong>Nota mínima 5/10 · Asistencia ≥ 80 %</div>
+  </div>
+</header>
+
+<!-- ══════════════ ÍNDICE ══════════════ -->
+<nav style="margin:34px 0 10px;">
+  <h2 style="font-size:1.18rem;color:#b35900;margin:0 0 14px;">📑 Índice de prácticas evaluables</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;">
+    <a href="#p1" style="display:block;background:#fff3e0;border:1px solid #FB8C0020;border-left:5px solid #FB8C00;border-radius:8px;padding:14px 16px;text-decoration:none;color:#12263a;">
+      <strong style="display:block;font-size:0.9rem;color:#b35900;margin-bottom:4px;">Práctica 01 · CE a) y b)</strong>
+      <span style="font-size:0.84rem;color:#5a7184;">Utilidad del CMS y requerimientos de instalación</span>
+    </a>
+    <a href="#p2" style="display:block;background:#fff3e0;border:1px solid #FB8C0020;border-left:5px solid #FB8C00;border-radius:8px;padding:14px 16px;text-decoration:none;color:#12263a;">
+      <strong style="display:block;font-size:0.9rem;color:#b35900;margin-bottom:4px;">Práctica 02 · CE c)</strong>
+      <span style="font-size:0.84rem;color:#5a7184;">Gestión de usuarios con roles diferentes</span>
+    </a>
+    <a href="#p3" style="display:block;background:#fff3e0;border:1px solid #FB8C0020;border-left:5px solid #FB8C00;border-radius:8px;padding:14px 16px;text-decoration:none;color:#12263a;">
+      <strong style="display:block;font-size:0.9rem;color:#b35900;margin-bottom:4px;">Práctica 03 · CE d) y g)</strong>
+      <span style="font-size:0.84rem;color:#5a7184;">Personalización de la interfaz, módulos y menús</span>
+    </a>
+    <a href="#p4" style="display:block;background:#fff3e0;border:1px solid #FB8C0020;border-left:5px solid #FB8C00;border-radius:8px;padding:14px 16px;text-decoration:none;color:#12263a;">
+      <strong style="display:block;font-size:0.9rem;color:#b35900;margin-bottom:4px;">Práctica 04 · CE f) y h)</strong>
+      <span style="font-size:0.84rem;color:#5a7184;">Actualizaciones y mecanismos de seguridad</span>
+    </a>
+    <a href="#p5" style="display:block;background:#fff3e0;border:1px solid #FB8C0020;border-left:5px solid #FB8C00;border-radius:8px;padding:14px 16px;text-decoration:none;color:#12263a;">
+      <strong style="display:block;font-size:0.9rem;color:#b35900;margin-bottom:4px;">Práctica 05 · CE i)</strong>
+      <span style="font-size:0.84rem;color:#5a7184;">Foros y reglas de acceso</span>
+    </a>
+    <a href="#p6" style="display:block;background:#fff3e0;border:1px solid #FB8C0020;border-left:5px solid #FB8C00;border-radius:8px;padding:14px 16px;text-decoration:none;color:#12263a;">
+      <strong style="display:block;font-size:0.9rem;color:#b35900;margin-bottom:4px;">Práctica 06 · CE e), j) y k)</strong>
+      <span style="font-size:0.84rem;color:#5a7184;">Pruebas de funcionamiento y copias de seguridad</span>
+    </a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PRÁCTICA 1
+     ═══════════════════════════════════════════════════════════ -->
+<details id="p1" style="background:#fff;border:1px solid #ffe0b2;border-radius:14px;margin-top:22px;overflow:hidden;box-shadow:0 2px 10px rgba(251,140,0,.06);">
+  <summary style="cursor:pointer;list-style:none;background:linear-gradient(135deg,#FB8C00,#d97700);color:#fff;padding:20px 24px;">
+    <span style="display:inline-block;background:rgba(255,255,255,0.22);font-size:0.7rem;font-weight:800;letter-spacing:.5px;padding:4px 12px;border-radius:999px;margin-bottom:8px;">Práctica 01 · CE a) y b)</span>
+    <span style="display:block;font-size:1.1rem;font-weight:800;line-height:1.3;">🔍 Verificar los requerimientos del servidor antes de instalar el CMS</span>
+  </summary>
+  <div style="padding:22px 26px;">
+
+    <!-- Datos de la tarea -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:#FB8C0020;border:1px solid #FB8C0020;border-radius:10px;overflow:hidden;margin-bottom:20px;">
+      <div style="background:#fff3e0;padding:12px 14px;"><div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:.5px;color:#b35900;font-weight:800;">Modalidad</div><div style="font-size:0.9rem;font-weight:700;">Individual</div></div>
+      <div style="background:#fff3e0;padding:12px 14px;"><div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:.5px;color:#b35900;font-weight:800;">Duración</div><div style="font-size:0.9rem;font-weight:700;">50 min</div></div>
+      <div style="background:#fff3e0;padding:12px 14px;"><div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:.5px;color:#b35900;font-weight:800;">Archivo</div><div style="font-size:0.9rem;font-weight:700;">UD1_P1_apellidos_nombre</div></div>
+      <div style="background:#fff3e0;padding:12px 14px;"><div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:.5px;color:#b35900;font-weight:800;">Formato admitido</div><div style="font-size:0.9rem;font-weight:700;">PDF · DOCX · ODT</div></div>
+    </div>
+
+    <!-- Lectura de arranque -->
+    <div style="background:#fff3e0;border-left:6px solid #FB8C00;border-radius:0 12px 12px 0;padding:18px 22px;margin-bottom:20px;">
+      <span style="display:inline-block;font-size:0.7rem;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:#b35900;margin-bottom:8px;">📖 Lectura de arranque</span>
+      <h3 style="margin:0 0 6px;font-size:1.05rem;color:#7a3d00;">«¿Qué es un CMS y por qué lo usan millones de webs?»</h3>
+      <p style="font-size:0.78rem;color:#8a6a4a;font-style:italic;margin:0 0 10px;">Fuente: Blog oficial de IONOS (ionos.es) — Guía de sistemas de gestión de contenidos.</p>
+      <p style="margin:0 0 12px;font-size:0.9rem;">Un CMS es un software que permite crear, publicar y mantener una web sin programar cada página. Su clave es que separa el contenido (guardado en una base de datos) de la presentación (plantillas del tema), de modo que cualquier persona puede gestionar el sitio desde un panel de administración y cambiar el diseño sin reescribir los textos.</p>
+      <p style="font-weight:800;color:#7a3d00;margin:0 0 6px;font-size:0.9rem;">✏️ Preguntas de comprensión lectora</p>
+      <ol style="margin:0 0 10px;padding-left:22px;font-size:0.88rem;">
+        <li>¿Qué dos elementos separa un CMS y por qué eso facilita la gestión de una web?</li>
+        <li>¿Dónde se almacena realmente el contenido en un CMS como WordPress?</li>
+        <li>¿Qué ventaja profesional aporta a un técnico de SMR conocer un CMS frente a programar HTML a mano?</li>
+      </ol>
+      <p style="margin:0;font-size:0.8rem;font-style:italic;color:#8a6a4a;">Estas tres respuestas se incluyen obligatoriamente en el documento que subes a la tarea.</p>
+    </div>
+
+    <!-- Objetivo -->
+    <p style="background:#fff3e0;border-radius:8px;padding:12px 16px;font-size:0.9rem;margin:0 0 18px;"><strong>🎯 Objetivo.</strong> Comprobar con evidencia objetiva que el servidor local cumple los requisitos mínimos para instalar un CMS.</p>
+
+    <!-- Materiales -->
+    <h4 style="margin:0 0 8px;color:#b35900;font-size:1rem;">🧰 Materiales necesarios</h4>
+    <ul style="margin:0 0 22px;padding-left:22px;font-size:0.9rem;">
+      <li>Ordenador del aula con XAMPP instalado (Apache + PHP + MariaDB).</li>
+      <li>Editor de texto (Notepad++ o VS Code).</li>
+      <li>Carpeta de trabajo <code style="background:#fff3e0;padding:1px 5px;border-radius:4px;">C:\xampp\htdocs\ud1</code> creada y accesible.</li>
+      <li>Navegador web actualizado (Firefox o Chrome).</li>
+      <li>Cuaderno o documento digital para anotar resultados.</li>
+    </ul>
+
+    <!-- Pasos -->
+    <h4 style="margin:0 0 10px;color:#b35900;font-size:1rem;">🛠️ Desarrollo paso a paso</h4>
+    <div style="border-left:6px solid #FB8C0020;padding-left:18px;">
+
+      <p style="margin:0 0 6px;font-weight:800;color:#7a3d00;font-size:0.92rem;">Paso 1 · Arrancar Apache y MariaDB en XAMPP</p>
+      <ol style="margin:0 0 12px;padding-left:22px;font-size:0.9rem;">
+        <li>Haz doble clic en el icono <strong>XAMPP Control Panel</strong> del escritorio.</li>
+        <li>Localiza la fila del módulo <strong>Apache</strong> y pulsa el botón <strong>Start</strong>.</li>
+        <li>Localiza la fila del módulo <strong>MySQL</strong> y pulsa el botón <strong>Start</strong>.</li>
+        <li>Comprueba que ambos botones aparecen ahora en verde con la palabra <em>Stop</em>.</li>
+        <li>Abre el navegador y escribe <code style="background:#fff3e0;padding:1px 5px;border-radius:4px;">http://localhost</code>. Debe aparecer la pantalla de bienvenida de XAMPP.</li>
+      </ol>
+      <div style="background:#e8f5e9;border-left:5px solid #43A047;border-radius:0 8px 8px 0;padding:10px 16px;margin-bottom:18px;font-size:0.88rem;color:#1b5e20;"><strong>✅ PC 1.</strong> Los módulos Apache y MySQL están en verde y <code>http://localhost</code> carga correctamente. Si Apache aparece en rojo, cambia el puerto 80 por el 8080 en <em>Config &gt; httpd.conf</em>.</div>
+
+      <p style="margin:0 0 6px;font-weight:800;color:#7a3d00;font-size:0.92rem;">Paso 2 · Crear el script de comprobación</p>
+      <ol style="margin:0 0 12px;padding-left:22px;font-size:0.9rem;">
+        <li>Abre el editor de texto y crea un archivo nuevo.</li>
+        <li>Copia exactamente el código <code style="background:#fff3e0;padding:1px 5px;border-radius:4px;">comprobar-versiones.php</code> del <strong>Anexo A</strong>.</li>
+        <li>Guarda el archivo con el nombre <code style="background:#fff3e0;padding:1px 5px;border-radius:4px;">comprobar-versiones.php</code> dentro de <code style="background:#fff3e0;padding:1px 5px;border-radius:4px;">C:\xampp\htdocs\ud1</code>.</li>
+        <li>Verifica que la extensión es <code>.php</code> y no <code>.php.txt</code>.</li>
+      </ol>
+      <div style="background:#e8f5e9;border-left:5px solid #43A047;border-radius:0 8px 8px 0;padding:10px 16px;margin-bottom:18px;font-size:0.88rem;color:#1b5e20;"><strong>✅ PC 2.</strong> El archivo existe en <code>C:\xampp\htdocs\ud1\comprobar-versiones.php</code> y su tamaño es mayor de 0 KB.</div>
+
+      <p style="margin:0 0 6px;font-weight:800;color:#7a3d00;font-size:0.92rem;">Paso 3 · Ejecutar el script y anotar los resultados</p>
+      <ol style="margin:0 0 12px;padding-left:22px;font-size:0.9rem;">
+        <li>En el navegador, escribe <code style="background:#fff3e0;padding:1px 5px;border-radius:4px;">http://localhost/ud1/comprobar-versiones.php</code>.</li>
+        <li>Lee el resultado que aparece en pantalla.</li>
+        <li>Anota: versión de PHP y si cada extensión aparece como <em>OK</em> o <em>FALTA</em>.</li>
+        <li>Anota también si la base de datos aparece como <em>OK</em>.</li>
+      </ol>
+      <div style="background:#e8f5e9;border-left:5px solid #43A047;border-radius:0 8px 8px 0;padding:10px 16px;margin-bottom:18px;font-size:0.88rem;color:#1b5e20;"><strong>✅ PC 3.</strong> Tienes anotados por escrito la versión de PHP y el estado de las 7 extensiones y de la base de datos.</div>
+
+      <p style="margin:0 0 6px;font-weight:800;color:#7a3d00;font-size:0.92rem;">Paso 4 · Comparar con los requisitos oficiales</p>
+      <ol style="margin:0 0 12px;padding-left:22px;font-size:0.9rem;">
+        <li>Abre una pestaña nueva y visita la página oficial de requisitos del CMS asignado (WordPress, Joomla o Drupal).</li>
+        <li>Localiza la tabla de «Requisitos mínimos».</li>
+        <li>Construye en tu cuaderno la tabla del <strong>Anexo B</strong>.</li>
+        <li>Rellena al menos cinco filas (versión de PHP, motor de base de datos, extensiones, memoria, permisos de escritura).</li>
+      </ol>
+      <div style="background:#e8f5e9;border-left:5px solid #43A047;border-radius:0 8px 8px 0;padding:10px 16px;margin-bottom:18px;font-size:0.88rem;color:#1b5e20;"><strong>✅ PC 4.</strong> La tabla comparativa tiene 5 filas completas y marca claramente qué requisitos se cumplen y cuáles no.</div>
+
+      <p style="margin:0 0 6px;font-weight:800;color:#7a3d00;font-size:0.92rem;">Paso 5 · Redactar el informe de viabilidad</p>
+      <ol style="margin:0 0 12px;padding-left:22px;font-size:0.9rem;">
+        <li>Escribe un texto de 8 a 10 líneas titulado <em>«Informe de viabilidad del servidor»</em>.</li>
+        <li>Indica si el servidor está preparado para instalar el CMS y por qué.</li>
+        <li>Si algún requisito no se cumple, escribe la solución técnica concreta (qué línea de <code style="background:#fff3e0;padding:1px 5px;border-radius:4px;">php.ini</code> cambiar y por qué valor).</li>
+        <li>Sube el informe y la tabla al aula virtual de Moodle Centros en la tarea «Práctica 1».</li>
+      </ol>
+      <div style="background:#e8f5e9;border-left:5px solid #43A047;border-radius:0 8px 8px 0;padding:10px 16px;margin-bottom:8px;font-size:0.88rem;color:#1b5e20;"><strong>✅ PC 5.</strong> El informe está subido a Moodle Centros antes de la fecha límite y contiene una conclusión clara de viabilidad.</div>
+    </div>
+
+    <!-- Errores comunes -->
+    <div style="background:#fdecea;border-left:5px solid #C62828;border-radius:0 9px 9px 0;padding:14px 18px;font-size:0.88rem;color:#7a1c1c;margin-top:18px;">
+      <strong>⚠️ Errores comunes</strong>
+      <ul style="margin:8px 0 0;padding-left:20px;">
+        <li><strong>Apache no arranca (puerto 80 ocupado):</strong> otro programa usa el puerto. En <em>Config &gt; httpd.conf</em>, cambia <code>Listen 80</code> por <code>Listen 8080</code>.</li>
+        <li><strong>El navegador muestra el código PHP en vez de ejecutarlo:</strong> has abierto el archivo con doble clic. Accede siempre por <code>http://localhost/...</code>.</li>
+        <li><strong>«Object not found»:</strong> la carpeta <code>ud1</code> no está dentro de <code>htdocs</code>. Comprueba la ruta exacta.</li>
+        <li><strong>El archivo se guarda como <code>.php.txt</code>:</strong> activa en el explorador «Extensiones de nombre de archivo conocidas».</li>
+      </ul>
+    </div>
+
+    <!-- ANEXOS -->
+    <details style="margin-top:22px;border:1px solid #ffe0b2;border-radius:10px;overflow:hidden;background:#fffdf8;">
+      <summary style="cursor:pointer;background:#fff3e0;color:#8a4a00;padding:14px 20px;font-weight:800;font-size:0.92rem;list-style:none;">📎 Anexo A · Código facilitado: comprobar-versiones.php</summary>
+      <div style="padding:20px 24px;">
+        <p style="margin:0 0 12px;font-size:0.88rem;">Copia este código tal cual en el archivo <code style="background:#fff3e0;padding:1px 5px;border-radius:4px;">comprobar-versiones.php</code>.</p>
+        <div style="background:#2b2b2b;color:#e8d9a8;font-family:Consolas,'Courier New',monospace;font-size:0.74rem;font-weight:700;padding:5px 12px;border-radius:8px 8px 0 0;display:inline-block;">comprobar-versiones.php</div>
+        <pre style="background:#1a1a1a;color:#f0e6d2;padding:15px 18px;border-radius:0 10px 10px 10px;overflow-x:auto;font-family:Consolas,'Courier New',monospace;font-size:0.8rem;line-height:1.55;margin:0;">&lt;?php
+// Script de comprobación de requisitos antes de instalar un CMS
+echo "Versión de PHP: " . phpversion() . "&lt;br&gt;";
+
+$extensiones = ['mysqli','mbstring','curl','gd','zip','xml','intl'];
+foreach ($extensiones as $ext) {
+    echo $ext . ": " . (extension_loaded($ext) ? "OK" : "FALTA") . "&lt;br&gt;";
+}
+
+// Comprobar conexión con MariaDB/MySQL
+$conexion = @new mysqli('localhost', 'root', '');
+echo $conexion-&gt;connect_error
+    ? "Base de datos: SIN CONEXIÓN"
+    : "Base de datos: OK";
+?&gt;</pre>
+      </div>
+    </details>
+
+    <details style="margin-top:14px;border:1px solid #ffe0b2;border-radius:10px;overflow:hidden;background:#fffdf8;">
+      <summary style="cursor:pointer;background:#fff3e0;color:#8a4a00;padding:14px 20px;font-weight:800;font-size:0.92rem;list-style:none;">📎 Anexo B · Plantilla de tabla comparativa de requisitos</summary>
+      <div style="padding:20px 24px;">
+        <p style="margin:0 0 12px;font-size:0.88rem;">Rellena esta tabla comparando los requisitos oficiales del CMS con los valores reales de tu servidor.</p>
+        <div style="overflow-x:auto;">
+          <table style="width:100%;font-size:0.82rem;">
+            <thead>
+              <tr>
+                <th style="background:#FB8C00;color:#fff;padding:9px 11px;border:1px solid #d97700;text-align:left;">Requisito oficial</th>
+                <th style="background:#FB8C00;color:#fff;padding:9px 11px;border:1px solid #d97700;text-align:left;">Valor en mi servidor</th>
+                <th style="background:#FB8C00;color:#fff;padding:9px 11px;border:1px solid #d97700;text-align:center;width:18%;">¿Cumple? (Sí/No)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background:#fffaf3;"><td style="padding:9px 11px;border:1px solid #ffe0b2;">Versión mínima de PHP</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td></tr>
+              <tr style="background:#fff3e0;"><td style="padding:9px 11px;border:1px solid #ffe0b2;">Motor de base de datos</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td></tr>
+              <tr style="background:#fffaf3;"><td style="padding:9px 11px;border:1px solid #ffe0b2;">Extensiones PHP obligatorias</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td></tr>
+              <tr style="background:#fff3e0;"><td style="padding:9px 11px;border:1px solid #ffe0b2;">Memoria PHP (memory_limit)</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td></tr>
+              <tr style="background:#fffaf3;"><td style="padding:9px 11px;border:1px solid #ffe0b2;">Permisos de escritura</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </details>
+
+    <!-- Qué debe contener el documento -->
+    <div style="margin-top:22px;border:2px solid #FB8C0020;border-radius:10px;padding:16px 20px;background:#fffdf8;">
+      <strong style="color:#b35900;font-size:0.95rem;">📎 El documento debe contener</strong>
+      <ul style="margin:8px 0 0;padding-left:20px;font-size:0.9rem;">
+        <li>Las tres respuestas de la lectura de arranque.</li>
+        <li>Captura de pantalla del panel de XAMPP con Apache y MySQL en verde.</li>
+        <li>Captura del resultado del script <code>comprobar-versiones.php</code>.</li>
+        <li>Tabla comparativa de requisitos (Anexo B) rellena con 5 filas.</li>
+        <li>Informe de viabilidad del servidor (8–10 líneas) con conclusión clara.</li>
+      </ul>
+    </div>
+
+    <!-- Rúbrica -->
+    <div style="margin-top:26px;border-top:4px solid #FB8C00;padding-top:18px;">
+      <h4 style="margin:0 0 4px;color:#b35900;font-size:1rem;">📊 Rúbrica · Práctica 1</h4>
+      <p style="margin:0 0 12px;font-size:0.82rem;color:#5a7184;">Tres ítems a partes iguales. Nota mínima: 5/10.</p>
+      <div style="overflow-x:auto;">
+        <table style="width:100%;font-size:0.76rem;">
+          <thead>
+            <tr>
+              <th style="background:#FB8C00;color:#fff;padding:8px 8px;border:1px solid #d97700;text-align:left;">Aspecto</th>
+              <th style="background:#FB8C00;color:#fff;padding:8px 8px;border:1px solid #d97700;text-align:center;width:7%;">Peso</th>
+              <th style="background:#43A047;color:#fff;padding:8px 8px;border:1px solid #d97700;">Nivel experto (9–10)</th>
+              <th style="background:#7CB342;color:#fff;padding:8px 8px;border:1px solid #d97700;">Nivel avanzado (7–8)</th>
+              <th style="background:#FBC02D;color:#fff;padding:8px 8px;border:1px solid #d97700;">Nivel suficiente (5–6)</th>
+              <th style="background:#F4511E;color:#fff;padding:8px 8px;border:1px solid #d97700;">Nivel inicial (3–4)</th>
+              <th style="background:#C62828;color:#fff;padding:8px 8px;border:1px solid #d97700;">Nivel no alcanzado (0–2)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#fffaf3;">
+              <td style="padding:8px;border:1px solid #ffe0b2;font-weight:700;">Ejecución técnica del procedimiento</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;text-align:center;font-weight:700;">33%</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Arranca servicios, crea el script y obtiene el informe de requisitos sin errores ni ayuda.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Ejecuta todo correctamente con alguna consulta puntual.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Completa los pasos con apoyo del docente.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Ejecuta parcialmente; comete errores de rutas o puertos.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">No arranca los servicios ni ejecuta el script.</td>
+            </tr>
+            <tr style="background:#fff3e0;">
+              <td style="padding:8px;border:1px solid #ffe0b2;font-weight:700;">Documentación, evidencias y respuestas de la lectura</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;text-align:center;font-weight:700;">33%</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Aporta todas las capturas, la tabla completa y respuestas ricas y bien redactadas.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Aporta casi todas las evidencias; respuestas correctas.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Evidencias incompletas o respuestas breves.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Faltan capturas y varias respuestas.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">No documenta ni responde a la lectura.</td>
+            </tr>
+            <tr style="background:#fffaf3;">
+              <td style="padding:8px;border:1px solid #ffe0b2;font-weight:700;">Justificación, autonomía y reflexión</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;text-align:center;font-weight:700;">34%</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">El informe concluye con criterio y propone soluciones técnicas concretas y bien argumentadas.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Concluye correctamente y propone alguna solución.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Conclusión básica, sin justificar del todo.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Conclusión muy pobre o incorrecta.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">No hay informe ni conclusión.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</details>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PRÁCTICA 2
+     ═══════════════════════════════════════════════════════════ -->
+<details id="p2" style="background:#fff;border:1px solid #ffe0b2;border-radius:14px;margin-top:22px;overflow:hidden;box-shadow:0 2px 10px rgba(251,140,0,.06);">
+  <summary style="cursor:pointer;list-style:none;background:linear-gradient(135deg,#FB8C00,#d97700);color:#fff;padding:20px 24px;">
+    <span style="display:inline-block;background:rgba(255,255,255,0.22);font-size:0.7rem;font-weight:800;letter-spacing:.5px;padding:4px 12px;border-radius:999px;margin-bottom:8px;">Práctica 02 · CE c)</span>
+    <span style="display:block;font-size:1.1rem;font-weight:800;line-height:1.3;">👥 Crear usuarios y asignar roles diferentes</span>
+  </summary>
+  <div style="padding:22px 26px;">
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:#FB8C0020;border:1px solid #FB8C0020;border-radius:10px;overflow:hidden;margin-bottom:20px;">
+      <div style="background:#fff3e0;padding:12px 14px;"><div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:.5px;color:#b35900;font-weight:800;">Modalidad</div><div style="font-size:0.9rem;font-weight:700;">Individual</div></div>
+      <div style="background:#fff3e0;padding:12px 14px;"><div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:.5px;color:#b35900;font-weight:800;">Duración</div><div style="font-size:0.9rem;font-weight:700;">55 min</div></div>
+      <div style="background:#fff3e0;padding:12px 14px;"><div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:.5px;color:#b35900;font-weight:800;">Archivo</div><div style="font-size:0.9rem;font-weight:700;">UD1_P2_apellidos_nombre</div></div>
+      <div style="background:#fff3e0;padding:12px 14px;"><div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:.5px;color:#b35900;font-weight:800;">Formato admitido</div><div style="font-size:0.9rem;font-weight:700;">PDF · DOCX · ODT</div></div>
+    </div>
+
+    <div style="background:#fff3e0;border-left:6px solid #FB8C00;border-radius:0 12px 12px 0;padding:18px 22px;margin-bottom:20px;">
+      <span style="display:inline-block;font-size:0.7rem;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:#b35900;margin-bottom:8px;">📖 Lectura de arranque</span>
+      <h3 style="margin:0 0 6px;font-size:1.05rem;color:#7a3d00;">«Roles y capacidades: quién puede hacer qué en tu web»</h3>
+      <p style="font-size:0.78rem;color:#8a6a4a;font-style:italic;margin:0 0 10px;">Fuente: Documentación oficial de WordPress en español (es.wordpress.org/support).</p>
+      <p style="margin:0 0 12px;font-size:0.9rem;">WordPress define cinco roles predefinidos —Administrador, Editor, Autor, Colaborador y Suscriptor— y asigna a cada uno un conjunto de «capacidades» concretas. Este modelo permite, por ejemplo, que un centro educativo tenga alumnado redactando entradas sin riesgo de que borre la configuración del sitio.</p>
+      <p style="font-weight:800;color:#7a3d00;margin:0 0 6px;font-size:0.9rem;">✏️ Preguntas de comprensión lectora</p>
+      <ol style="margin:0 0 10px;padding-left:22px;font-size:0.88rem;">
+        <li>¿Qué diferencia hay entre un rol y una capacidad en WordPress?</li>
+        <li>¿Qué rol elegirías para un compañero que solo debe redactar borradores y no publicarlos?</li>
+        <li>¿Por qué es peligroso dar el rol de Administrador a todas las personas del equipo?</li>
+      </ol>
+      <p style="margin:0;font-size:0.8rem;font-style:italic;color:#8a6a4a;">Estas tres respuestas se incluyen obligatoriamente en el documento que subes a la tarea.</p>
+    </div>
+
+    <p style="background:#fff3e0;border-radius:8px;padding:12px 16px;font-size:0.9rem;margin:0 0 18px;"><strong>🎯 Objetivo.</strong> Crear tres cuentas de usuario con roles distintos y verificar en el navegador que sus permisos son realmente diferentes.</p>
+
+    <h4 style="margin:0 0 8px;color:#b35900;font-size:1rem;">🧰 Materiales necesarios</h4>
+    <ul style="margin:0 0 22px;padding-left:22px;font-size:0.9rem;">
+      <li>CMS ya instalado y accesible en <code style="background:#fff3e0;padding:1px 5px;border-radius:4px;">http://localhost/ud1/wordpress</code>.</li>
+      <li>Credenciales de administrador del sitio.</li>
+      <li>Tres direcciones de correo ficticias: <code>alumno01@test.es</code>, <code>alumno02@test.es</code>, <code>alumno03@test.es</code>.</li>
+      <li>Navegador con ventana de incógnito disponible.</li>
+    </ul>
+
+    <h4 style="margin:0 0 10px;color:#b35900;font-size:1rem;">🛠️ Desarrollo paso a paso</h4>
+    <div style="border-left:6px solid #FB8C0020;padding-left:18px;">
+
+      <p style="margin:0 0 6px;font-weight:800;color:#7a3d00;font-size:0.92rem;">Paso 1 · Acceder al panel de administración</p>
+      <ol style="margin:0 0 12px;padding-left:22px;font-size:0.9rem;">
+        <li>Abre el navegador y escribe <code style="background:#fff3e0;padding:1px 5px;border-radius:4px;">http://localhost/ud1/wordpress/wp-admin</code>.</li>
+        <li>Introduce el usuario administrador y su contraseña.</li>
+        <li>Pulsa <strong>Acceder</strong>.</li>
+        <li>Comprueba que ves el <em>Escritorio</em> con el menú lateral izquierdo.</li>
+      </ol>
+      <div style="background:#e8f5e9;border-left:5px solid #43A047;border-radius:0 8px 8px 0;padding:10px 16px;margin-bottom:18px;font-size:0.88rem;color:#1b5e20;"><strong>✅ PC 1.</strong> Estás dentro del panel y ves el menú lateral con Entradas, Medios, Páginas, Comentarios, Apariencia, Plugins, Usuarios, Herramientas y Ajustes.</div>
+
+      <p style="margin:0 0 6px;font-weight:800;color:#7a3d00;font-size:0.92rem;">Paso 2 · Crear el usuario con rol Colaborador</p>
+      <ol style="margin:0 0 12px;padding-left:22px;font-size:0.9rem;">
+        <li>En el menú lateral, pulsa <strong>Usuarios &gt; Añadir nuevo</strong>.</li>
+        <li>En <em>Nombre de usuario</em> escribe <code style="background:#fff3e0;padding:1px 5px;border-radius:4px;">alumno01</code>.</li>
+        <li>En <em>Correo electrónico</em> escribe <code style="background:#fff3e0;padding:1px 5px;border-radius:4px;">alumno01@test.es</code>.</li>
+        <li>En <em>Contraseña</em> pulsa el botón <strong>Mostrar</strong> y anota la contraseña generada.</li>
+        <li>En el desplegable <em>Perfil</em> selecciona <strong>Colaborador</strong>.</li>
+        <li>Pulsa <strong>Añadir nuevo usuario</strong>.</li>
+      </ol>
+      <div style="background:#e8f5e9;border-left:5px solid #43A047;border-radius:0 8px 8px 0;padding:10px 16px;margin-bottom:18px;font-size:0.88rem;color:#1b5e20;"><strong>✅ PC 2.</strong> En <em>Usuarios &gt; Todos los usuarios</em> aparece <code>alumno01</code> con el rol «Colaborador».</div>
+
+      <p style="margin:0 0 6px;font-weight:800;color:#7a3d00;font-size:0.92rem;">Paso 3 · Crear los usuarios Autor y Suscriptor</p>
+      <ol style="margin:0 0 12px;padding-left:22px;font-size:0.9rem;">
+        <li>Repite el Paso 2 con <code style="background:#fff3e0;padding:1px 5px;border-radius:4px;">alumno02</code> y <code>alumno02@test.es</code>.</li>
+        <li>Selecciona el perfil <strong>Autor</strong> y pulsa <strong>Añadir nuevo usuario</strong>.</li>
+        <li>Repite el proceso con <code style="background:#fff3e0;padding:1px 5px;border-radius:4px;">alumno03</code> y <code>alumno03@test.es</code>.</li>
+        <li>Selecciona el perfil <strong>Suscriptor</strong> y pulsa <strong>Añadir nuevo usuario</strong>.</li>
+      </ol>
+      <div style="background:#e8f5e9;border-left:5px solid #43A047;border-radius:0 8px 8px 0;padding:10px 16px;margin-bottom:18px;font-size:0.88rem;color:#1b5e20;"><strong>✅ PC 3.</strong> La lista de usuarios muestra las tres cuentas nuevas con roles Colaborador, Autor y Suscriptor respectivamente.</div>
+
+      <p style="margin:0 0 6px;font-weight:800;color:#7a3d00;font-size:0.92rem;">Paso 4 · Comprobar los permisos reales de cada rol</p>
+      <ol style="margin:0 0 12px;padding-left:22px;font-size:0.9rem;">
+        <li>Abre una ventana de navegación privada (Ctrl + Shift + P en Firefox).</li>
+        <li>Entra en <code style="background:#fff3e0;padding:1px 5px;border-radius:4px;">http://localhost/ud1/wordpress/wp-admin</code> con <code>alumno01</code>.</li>
+        <li>Anota qué opciones aparecen en el menú lateral y cuáles no.</li>
+        <li>Cierra la ventana privada y repite con <code>alumno02</code> y con <code>alumno03</code>.</li>
+        <li>Completa la tabla del <strong>Anexo</strong> con tres filas (una por usuario).</li>
+      </ol>
+      <div style="background:#e8f5e9;border-left:5px solid #43A047;border-radius:0 8px 8px 0;padding:10px 16px;margin-bottom:18px;font-size:0.88rem;color:#1b5e20;"><strong>✅ PC 4.</strong> La tabla está completa y demuestra que <code>alumno01</code> no puede publicar, <code>alumno02</code> sí puede publicar y <code>alumno03</code> no ve el panel de administración.</div>
+
+      <p style="margin:0 0 6px;font-weight:800;color:#7a3d00;font-size:0.92rem;">Paso 5 · Documentar y entregar la práctica</p>
+      <ol style="margin:0 0 12px;padding-left:22px;font-size:0.9rem;">
+        <li>Crea un documento con: captura de la lista de usuarios, captura de cada menú lateral y la tabla comparativa.</li>
+        <li>Añade una conclusión de 5 líneas explicando por qué se aplica el principio de mínimo privilegio.</li>
+        <li>Guarda el documento en PDF con el nombre <code>UD1_P2_apellidos_nombre.pdf</code>.</li>
+        <li>Súbelo a la tarea «Práctica 2» del aula virtual de Moodle Centros.</li>
+      </ol>
+      <div style="background:#e8f5e9;border-left:5px solid #43A047;border-radius:0 8px 8px 0;padding:10px 16px;margin-bottom:8px;font-size:0.88rem;color:#1b5e20;"><strong>✅ PC 5.</strong> El PDF está subido a Moodle Centros con el nombre normalizado y contiene las tres capturas y la conclusión.</div>
+    </div>
+
+    <div style="background:#fdecea;border-left:5px solid #C62828;border-radius:0 9px 9px 0;padding:14px 18px;font-size:0.88rem;color:#7a1c1c;margin-top:18px;">
+      <strong>⚠️ Errores comunes</strong>
+      <ul style="margin:8px 0 0;padding-left:20px;">
+        <li><strong>No llega el correo de confirmación:</strong> en local no hay servicio de correo. Desmarca «Enviar al usuario un correo electrónico» o configura un plugin SMTP de pruebas.</li>
+        <li><strong>No recuerdo la contraseña generada:</strong> pulsa siempre <em>Mostrar</em> antes de crear y cópiala en un lugar seguro.</li>
+        <li><strong>La ventana privada no abre:</strong> usa otro navegador distinto para simular una segunda sesión.</li>
+        <li><strong>El rol no cambia:</strong> tras modificar el perfil hay que pulsar <em>Actualizar usuario</em>; si no, no se guarda.</li>
+      </ul>
+    </div>
+
+    <details style="margin-top:22px;border:1px solid #ffe0b2;border-radius:10px;overflow:hidden;background:#fffdf8;">
+      <summary style="cursor:pointer;background:#fff3e0;color:#8a4a00;padding:14px 20px;font-weight:800;font-size:0.92rem;list-style:none;">📎 Anexo A · Plantilla de verificación de permisos por rol</summary>
+      <div style="padding:20px 24px;">
+        <p style="margin:0 0 12px;font-size:0.88rem;">Completa la tabla tras iniciar sesión con cada usuario en una ventana privada.</p>
+        <div style="overflow-x:auto;">
+          <table style="width:100%;font-size:0.82rem;">
+            <thead>
+              <tr>
+                <th style="background:#FB8C00;color:#fff;padding:9px 11px;border:1px solid #d97700;text-align:left;">Usuario / Rol</th>
+                <th style="background:#FB8C00;color:#fff;padding:9px 11px;border:1px solid #d97700;text-align:center;">¿Ve Plugins?</th>
+                <th style="background:#FB8C00;color:#fff;padding:9px 11px;border:1px solid #d97700;text-align:center;">¿Ve Apariencia?</th>
+                <th style="background:#FB8C00;color:#fff;padding:9px 11px;border:1px solid #d97700;text-align:center;">¿Puede publicar directamente?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background:#fffaf3;"><td style="padding:9px 11px;border:1px solid #ffe0b2;font-weight:700;">alumno01 · Colaborador</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td></tr>
+              <tr style="background:#fff3e0;"><td style="padding:9px 11px;border:1px solid #ffe0b2;font-weight:700;">alumno02 · Autor</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td></tr>
+              <tr style="background:#fffaf3;"><td style="padding:9px 11px;border:1px solid #ffe0b2;font-weight:700;">alumno03 · Suscriptor</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </details>
+
+    <details style="margin-top:14px;border:1px solid #ffe0b2;border-radius:10px;overflow:hidden;background:#fffdf8;">
+      <summary style="cursor:pointer;background:#fff3e0;color:#8a4a00;padding:14px 20px;font-weight:800;font-size:0.92rem;list-style:none;">📎 Anexo B · Código facilitado: gestión de usuarios con WP-CLI</summary>
+      <div style="padding:20px 24px;">
+        <p style="margin:0 0 12px;font-size:0.88rem;">Comandos alternativos para crear y modificar usuarios desde la terminal.</p>
+        <div style="background:#2b2b2b;color:#e8d9a8;font-family:Consolas,'Courier New',monospace;font-size:0.74rem;font-weight:700;padding:5px 12px;border-radius:8px 8px 0 0;display:inline-block;">wp-cli</div>
+        <pre style="background:#1a1a1a;color:#f0e6d2;padding:15px 18px;border-radius:0 10px 10px 10px;overflow-x:auto;font-family:Consolas,'Courier New',monospace;font-size:0.8rem;line-height:1.55;margin:0;"># Crear un usuario con rol de colaborador
+wp user create alumno01 alumno01@iesvegadelguadalete.es \
+   --role=colaborador --user_pass=ClaveSegura2026!
+
+# Crear un usuario con rol de editor
+wp user create editoraula editoraula@iesvegadelguadalete.es \
+   --role=editor --user_pass=OtraClaveSegura2026!
+
+# Listar todos los usuarios y su rol
+wp user list --fields=ID,user_login,display_name,roles
+
+# Cambiar el rol de un usuario existente
+wp user set-role alumno01 autor</pre>
+      </div>
+    </details>
+
+    <div style="margin-top:22px;border:2px solid #FB8C0020;border-radius:10px;padding:16px 20px;background:#fffdf8;">
+      <strong style="color:#b35900;font-size:0.95rem;">📎 El documento debe contener</strong>
+      <ul style="margin:8px 0 0;padding-left:20px;font-size:0.9rem;">
+        <li>Las tres respuestas de la lectura de arranque.</li>
+        <li>Captura de la lista completa de usuarios con sus roles.</li>
+        <li>Capturas de los menús laterales de <code>alumno01</code>, <code>alumno02</code> y <code>alumno03</code>.</li>
+        <li>Tabla de verificación de permisos por rol cumplimentada (Anexo A).</li>
+        <li>Conclusión de 5 líneas sobre el principio de mínimo privilegio.</li>
+      </ul>
+    </div>
+
+    <div style="margin-top:26px;border-top:4px solid #FB8C00;padding-top:18px;">
+      <h4 style="margin:0 0 4px;color:#b35900;font-size:1rem;">📊 Rúbrica · Práctica 2</h4>
+      <p style="margin:0 0 12px;font-size:0.82rem;color:#5a7184;">Tres ítems a partes iguales. Nota mínima: 5/10.</p>
+      <div style="overflow-x:auto;">
+        <table style="width:100%;font-size:0.76rem;">
+          <thead>
+            <tr>
+              <th style="background:#FB8C00;color:#fff;padding:8px;border:1px solid #d97700;text-align:left;">Aspecto</th>
+              <th style="background:#FB8C00;color:#fff;padding:8px;border:1px solid #d97700;text-align:center;width:7%;">Peso</th>
+              <th style="background:#43A047;color:#fff;padding:8px;border:1px solid #d97700;">Nivel experto (9–10)</th>
+              <th style="background:#7CB342;color:#fff;padding:8px;border:1px solid #d97700;">Nivel avanzado (7–8)</th>
+              <th style="background:#FBC02D;color:#fff;padding:8px;border:1px solid #d97700;">Nivel suficiente (5–6)</th>
+              <th style="background:#F4511E;color:#fff;padding:8px;border:1px solid #d97700;">Nivel inicial (3–4)</th>
+              <th style="background:#C62828;color:#fff;padding:8px;border:1px solid #d97700;">Nivel no alcanzado (0–2)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#fffaf3;">
+              <td style="padding:8px;border:1px solid #ffe0b2;font-weight:700;">Ejecución técnica del procedimiento</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;text-align:center;font-weight:700;">33%</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Crea los tres usuarios con los roles correctos y verifica permisos sin ayuda.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Completa todo con alguna consulta puntual.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Crea los usuarios con apoyo del docente.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Errores en la asignación de roles o usuarios incompletos.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">No crea usuarios ni verifica permisos.</td>
+            </tr>
+            <tr style="background:#fff3e0;">
+              <td style="padding:8px;border:1px solid #ffe0b2;font-weight:700;">Documentación, evidencias y respuestas de la lectura</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;text-align:center;font-weight:700;">33%</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Todas las capturas, tabla completa y respuestas ricas y bien redactadas.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Casi todas las evidencias; respuestas correctas.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Evidencias incompletas o respuestas breves.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Faltan capturas y varias respuestas.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">No documenta ni responde.</td>
+            </tr>
+            <tr style="background:#fffaf3;">
+              <td style="padding:8px;border:1px solid #ffe0b2;font-weight:700;">Justificación, autonomía y reflexión</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;text-align:center;font-weight:700;">34%</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Explica con rigor el principio de mínimo privilegio y lo relaciona con casos reales.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Justificación correcta y bien redactada.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Justificación básica o poco argumentada.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Justificación muy pobre.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">No hay justificación.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</details>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PRÁCTICA 3
+     ═══════════════════════════════════════════════════════════ -->
+<details id="p3" style="background:#fff;border:1px solid #ffe0b2;border-radius:14px;margin-top:22px;overflow:hidden;box-shadow:0 2px 10px rgba(251,140,0,.06);">
+  <summary style="cursor:pointer;list-style:none;background:linear-gradient(135deg,#FB8C00,#d97700);color:#fff;padding:20px 24px;">
+    <span style="display:inline-block;background:rgba(255,255,255,0.22);font-size:0.7rem;font-weight:800;letter-spacing:.5px;padding:4px 12px;border-radius:999px;margin-bottom:8px;">Práctica 03 · CE d) y g)</span>
+    <span style="display:block;font-size:1.1rem;font-weight:800;line-height:1.3;">🎨 Personalizar la apariencia e instalar un módulo y un menú</span>
+  </summary>
+  <div style="padding:22px 26px;">
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:#FB8C0020;border:1px solid #FB8C0020;border-radius:10px;overflow:hidden;margin-bottom:20px;">
+      <div style="background:#fff3e0;padding:12px 14px;"><div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:.5px;color:#b35900;font-weight:800;">Modalidad</div><div style="font-size:0.9rem;font-weight:700;">Individual</div></div>
+      <div style="background:#fff3e0;padding:12px 14px;"><div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:.5px;color:#b35900;font-weight:800;">Duración</div><div style="font-size:0.9rem;font-weight:700;">60 min</div></div>
+      <div style="background:#fff3e0;padding:12px 14px;"><div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:.5px;color:#b35900;font-weight:800;">Archivo</div><div style="font-size:0.9rem;font-weight:700;">UD1_P3_apellidos_nombre</div></div>
+      <div style="background:#fff3e0;padding:12px 14px;"><div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:.5px;color:#b35900;font-weight:800;">Formato admitido</div><div style="font-size:0.9rem;font-weight:700;">PDF · DOCX · ODT</div></div>
+    </div>
+
+    <div style="background:#fff3e0;border-left:6px solid #FB8C00;border-radius:0 12px 12px 0;padding:18px 22px;margin-bottom:20px;">
+      <span style="display:inline-block;font-size:0.7rem;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:#b35900;margin-bottom:8px;">📖 Lectura de arranque</span>
+      <h3 style="margin:0 0 6px;font-size:1.05rem;color:#7a3d00;">«Personalizar tu tema sin tocar el código del CMS»</h3>
+      <p style="font-size:0.78rem;color:#8a6a4a;font-style:italic;margin:0 0 10px;">Fuente: Documentación oficial de WordPress (Ayuda y soporte) y blog técnico de Hostinger.</p>
+      <p style="margin:0 0 12px;font-size:0.9rem;">La apariencia de un CMS se controla con <strong>temas</strong> (plantillas visuales) y <strong>plugins</strong> (funcionalidad). Modificar directamente los archivos del núcleo es una mala práctica: cualquier actualización borraría los cambios. La forma correcta es usar temas hijos o el personalizador integrado.</p>
+      <p style="font-weight:800;color:#7a3d00;margin:0 0 6px;font-size:0.9rem;">✏️ Preguntas de comprensión lectora</p>
+      <ol style="margin:0 0 10px;padding-left:22px;font-size:0.88rem;">
+        <li>¿Por qué no se deben editar directamente los archivos del núcleo del CMS?</li>
+        <li>¿Qué diferencia hay entre un tema y un plugin?</li>
+        <li>¿Qué ventaja aporta un tema hijo frente a modificar el tema original?</li>
+      </ol>
+      <p style="margin:0;font-size:0.8rem;font-style:italic;color:#8a6a4a;">Estas tres respuestas se incluyen obligatoriamente en el documento que subes a la tarea.</p>
+    </div>
+
+    <p style="background:#fff3e0;border-radius:8px;padding:12px 16px;font-size:0.9rem;margin:0 0 18px;"><strong>🎯 Objetivo.</strong> Cambiar el aspecto visual del sitio, instalar un plugin de funcionalidad y crear un menú de navegación operativo.</p>
+
+    <h4 style="margin:0 0 8px;color:#b35900;font-size:1rem;">🧰 Materiales necesarios</h4>
+    <ul style="margin:0 0 22px;padding-left:22px;font-size:0.9rem;">
+      <li>CMS en funcionamiento con la sesión de administrador abierta.</li>
+      <li>Conexión a Internet (para descargar temas y plugins del repositorio oficial).</li>
+      <li>Una imagen en PNG o JPG de menos de 1 MB para usar como logotipo (puedes usar el SVG del Anexo B).</li>
+      <li>Al menos tres páginas creadas previamente (Inicio, Sobre nosotros, Contacto).</li>
+    </ul>
+
+    <h4 style="margin:0 0 10px;color:#b35900;font-size:1rem;">🛠️ Desarrollo paso a paso</h4>
+    <div style="border-left:6px solid #FB8C0020;padding-left:18px;">
+
+      <p style="margin:0 0 6px;font-weight:800;color:#7a3d00;font-size:0.92rem;">Paso 1 · Instalar y activar un tema nuevo</p>
+      <ol style="margin:0 0 12px;padding-left:22px;font-size:0.9rem;">
+        <li>En el panel, pulsa <strong>Apariencia &gt; Temas</strong>.</li>
+        <li>Pulsa el botón <strong>Añadir nuevo</strong> situado en la parte superior.</li>
+        <li>En el buscador escribe <code style="background:#fff3e0;padding:1px 5px;border-radius:4px;">Astra</code>.</li>
+        <li>Localiza la tarjeta del tema Astra y pulsa <strong>Instalar</strong>.</li>
+        <li>Cuando termine, pulsa <strong>Activar</strong>.</li>
+      </ol>
+      <div style="background:#e8f5e9;border-left:5px solid #43A047;border-radius:0 8px 8px 0;padding:10px 16px;margin-bottom:18px;font-size:0.88rem;color:#1b5e20;"><strong>✅ PC 1.</strong> En Apariencia &gt; Temas aparece Astra con la etiqueta «Activo» y la web pública ha cambiado de aspecto.</div>
+
+      <p style="margin:0 0 6px;font-weight:800;color:#7a3d00;font-size:0.92rem;">Paso 2 · Personalizar colores, tipografía y logotipo</p>
+      <ol style="margin:0 0 12px;padding-left:22px;font-size:0.9rem;">
+        <li>Pulsa <strong>Apariencia &gt; Personalizar</strong>.</li>
+        <li>Entra en <strong>Identidad del sitio</strong> y pulsa <strong>Seleccionar logotipo</strong>.</li>
+        <li>Sube tu imagen, recórtala si el sistema lo pide y pulsa <strong>Publicar</strong>.</li>
+        <li>Vuelve al menú del personalizador y entra en <strong>Colores</strong>.</li>
+        <li>Cambia el color de los enlaces a <code style="background:#fff3e0;padding:1px 5px;border-radius:4px;">#0d47a1</code> y el de los títulos a <code>#0a2540</code>.</li>
+        <li>Pulsa <strong>Publicar</strong> en la parte superior.</li>
+      </ol>
+      <div style="background:#e8f5e9;border-left:5px solid #43A047;border-radius:0 8px 8px 0;padding:10px 16px;margin-bottom:18px;font-size:0.88rem;color:#1b5e20;"><strong>✅ PC 2.</strong> Al abrir la web pública en otra pestaña se ve el logotipo nuevo y los colores azules corporativos aplicados.</div>
+
+      <p style="margin:0 0 6px;font-weight:800;color:#7a3d00;font-size:0.92rem;">Paso 3 · Crear y asignar un menú de navegación</p>
+      <ol style="margin:0 0 12px;padding-left:22px;font-size:0.9rem;">
+        <li>En el personalizador, entra en <strong>Menús</strong>.</li>
+        <li>Pulsa <strong>Crear un menú nuevo</strong> y escribe el nombre <code style="background:#fff3e0;padding:1px 5px;border-radius:4px;">Menu principal</code>.</li>
+        <li>En <em>Añadir elementos</em>, marca las páginas <em>Inicio</em>, <em>Sobre nosotros</em> y <em>Contacto</em>.</li>
+        <li>Pulsa <strong>Añadir al menú</strong>.</li>
+        <li>Arrastra los elementos hasta que queden en el orden deseado.</li>
+        <li>En <em>Ubicaciones</em>, marca la casilla <strong>Menú principal</strong>.</li>
+        <li>Pulsa <strong>Publicar</strong>.</li>
+      </ol>
+      <div style="background:#e8f5e9;border-left:5px solid #43A047;border-radius:0 8px 8px 0;padding:10px 16px;margin-bottom:18px;font-size:0.88rem;color:#1b5e20;"><strong>✅ PC 3.</strong> En la web pública aparece una barra de navegación con los tres enlaces y cada uno lleva a la página correcta.</div>
+
+      <p style="margin:0 0 6px;font-weight:800;color:#7a3d00;font-size:0.92rem;">Paso 4 · Instalar y activar un módulo (plugin) de funcionalidad</p>
+      <ol style="margin:0 0 12px;padding-left:22px;font-size:0.9rem;">
+        <li>En el panel, pulsa <strong>Plugins &gt; Añadir nuevo</strong>.</li>
+        <li>En el buscador escribe <code style="background:#fff3e0;padding:1px 5px;border-radius:4px;">Contact Form 7</code>.</li>
+        <li>Pulsa <strong>Instalar ahora</strong> y después <strong>Activar</strong>.</li>
+        <li>Comprueba que aparece un nuevo elemento <strong>Contacto</strong> en el menú lateral.</li>
+        <li>Entra en <strong>Contacto &gt; Formularios</strong> y copia el código corto del formulario.</li>
+        <li>Edita la página <em>Contacto</em>, pega el código corto y pulsa <strong>Actualizar</strong>.</li>
+      </ol>
+      <div style="background:#e8f5e9;border-left:5px solid #43A047;border-radius:0 8px 8px 0;padding:10px 16px;margin-bottom:18px;font-size:0.88rem;color:#1b5e20;"><strong>✅ PC 4.</strong> La página Contacto muestra un formulario funcional con campos de nombre, correo, asunto y mensaje.</div>
+
+      <p style="margin:0 0 6px;font-weight:800;color:#7a3d00;font-size:0.92rem;">Paso 5 · Configurar los widgets del pie de página</p>
+      <ol style="margin:0 0 12px;padding-left:22px;font-size:0.9rem;">
+        <li>Pulsa <strong>Apariencia &gt; Personalizar &gt; Widgets</strong>.</li>
+        <li>Selecciona la zona <strong>Pie de página 1</strong>.</li>
+        <li>Pulsa <strong>Añadir un widget</strong> y elige <strong>Texto</strong>.</li>
+        <li>Escribe: <em>IES Vega del Guadalete — La Barca de la Florida (Cádiz). Curso 2026–2027.</em></li>
+        <li>Pulsa <strong>Publicar</strong> y comprueba el resultado en la web pública.</li>
+      </ol>
+      <div style="background:#e8f5e9;border-left:5px solid #43A047;border-radius:0 8px 8px 0;padding:10px 16px;margin-bottom:18px;font-size:0.88rem;color:#1b5e20;"><strong>✅ PC 5.</strong> El pie de página de la web pública muestra el texto institucional con los datos del centro.</div>
+
+      <p style="margin:0 0 6px;font-weight:800;color:#7a3d00;font-size:0.92rem;">Paso 6 · Documentar los cambios</p>
+      <ol style="margin:0 0 12px;padding-left:22px;font-size:0.9rem;">
+        <li>Haz una captura de <strong>Apariencia &gt; Temas</strong> donde se vea Astra activo.</li>
+        <li>Haz una captura de <strong>Plugins &gt; Plugins instalados</strong>.</li>
+        <li>Haz una captura de la web pública con el menú y el pie de página.</li>
+        <li>Rellena el inventario de plugins del <strong>Anexo C</strong>.</li>
+        <li>Sube el documento en PDF a Moodle Centros en la tarea «Práctica 3».</li>
+      </ol>
+      <div style="background:#e8f5e9;border-left:5px solid #43A047;border-radius:0 8px 8px 0;padding:10px 16px;margin-bottom:8px;font-size:0.88rem;color:#1b5e20;"><strong>✅ PC 6.</strong> El PDF contiene las tres capturas y la lista razonada de plugins, y está entregado en Moodle Centros.</div>
+    </div>
+
+    <div style="background:#fdecea;border-left:5px solid #C62828;border-radius:0 9px 9px 0;padding:14px 18px;font-size:0.88rem;color:#7a1c1c;margin-top:18px;">
+      <strong>⚠️ Errores comunes</strong>
+      <ul style="margin:8px 0 0;padding-left:20px;">
+        <li><strong>El tema nuevo rompe el diseño:</strong> algunos temas incluyen sus propios menús. Vuelve a asignar el menú en <em>Apariencia &gt; Personalizar &gt; Menús</em>.</li>
+        <li><strong>No aparece el botón «Añadir nuevo»:</strong> estás con un rol sin permisos. Entra como Administrador.</li>
+        <li><strong>La instalación de plugin falla por permisos:</strong> en local, concede permisos de escritura a la carpeta <code>wp-content</code>.</li>
+        <li><strong>El logotipo sale deformado:</strong> usa una imagen cuadrada o rectangular con proporción adecuada (por ejemplo 400 × 120 píxeles).</li>
+      </ul>
+    </div>
+
+    <details style="margin-top:22px;border:1px solid #ffe0b2;border-radius:10px;overflow:hidden;background:#fffdf8;">
+      <summary style="cursor:pointer;background:#fff3e0;color:#8a4a00;padding:14px 20px;font-weight:800;font-size:0.92rem;list-style:none;">📎 Anexo A · Código facilitado: style.css de un tema hijo</summary>
+      <div style="padding:20px 24px;">
+        <p style="margin:0 0 12px;font-size:0.88rem;">Contenido del archivo <code style="background:#fff3e0;padding:1px 5px;border-radius:4px;">style.css</code> de un tema hijo sobre Astra.</p>
+        <div style="background:#2b2b2b;color:#e8d9a8;font-family:Consolas,'Courier New',monospace;font-size:0.74rem;font-weight:700;padding:5px 12px;border-radius:8px 8px 0 0;display:inline-block;">style.css</div>
+        <pre style="background:#1a1a1a;color:#f0e6d2;padding:15px 18px;border-radius:0 10px 10px 10px;overflow-x:auto;font-family:Consolas,'Courier New',monospace;font-size:0.8rem;line-height:1.55;margin:0;">/*
+Theme Name:   Vega Child
+Template:     astra
+Author:       Dpto. Informática IES Vega del Guadalete
+Version:      1.0
+*/
+
+/* Personalización de la cabecera del sitio */
+.site-header {
+    background: linear-gradient(135deg, #0a2540, #0d47a1);
+    color: #ffffff;
+    padding: 18px 0;
+}
+
+/* Menú de navegación principal */
+.main-navigation a {
+    color: #ffca28;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}</pre>
+      </div>
+    </details>
+
+    <details style="margin-top:14px;border:1px solid #ffe0b2;border-radius:10px;overflow:hidden;background:#fffdf8;">
+      <summary style="cursor:pointer;background:#fff3e0;color:#8a4a00;padding:14px 20px;font-weight:800;font-size:0.92rem;list-style:none;">📎 Anexo B · Logotipo SVG facilitado por el profesorado</summary>
+      <div style="padding:20px 24px;">
+        <p style="margin:0 0 12px;font-size:0.88rem;">Si no dispones de un logotipo propio, guarda el siguiente SVG como <code style="background:#fff3e0;padding:1px 5px;border-radius:4px;">logo-ies.svg</code> y súbelo en el personalizador.</p>
+        <div style="text-align:center;background:#f9f9f9;border:1px solid #ffe0b2;border-radius:8px;padding:18px;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" width="320" height="96" role="img" aria-label="Logotipo IES Vega del Guadalete">
+            <rect x="0" y="0" width="400" height="120" rx="14" fill="#0a2540"/>
+            <circle cx="60" cy="60" r="34" fill="#FB8C00"/>
+            <text x="60" y="72" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="800" fill="#0a2540">VG</text>
+            <text x="110" y="52" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="800" fill="#ffffff">IES VEGA</text>
+            <text x="110" y="78" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="600" fill="#FB8C00">del Guadalete</text>
+            <text x="110" y="100" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#cfe0f5">La Barca de la Florida · Cádiz</text>
+          </svg>
+        </div>
+      </div>
+    </details>
+
+    <details style="margin-top:14px;border:1px solid #ffe0b2;border-radius:10px;overflow:hidden;background:#fffdf8;">
+      <summary style="cursor:pointer;background:#fff3e0;color:#8a4a00;padding:14px 20px;font-weight:800;font-size:0.92rem;list-style:none;">📎 Anexo C · Plantilla de inventario de plugins instalados</summary>
+      <div style="padding:20px 24px;">
+        <div style="overflow-x:auto;">
+          <table style="width:100%;font-size:0.82rem;">
+            <thead>
+              <tr>
+                <th style="background:#FB8C00;color:#fff;padding:9px 11px;border:1px solid #d97700;text-align:left;">Plugin</th>
+                <th style="background:#FB8C00;color:#fff;padding:9px 11px;border:1px solid #d97700;text-align:left;">Versión</th>
+                <th style="background:#FB8C00;color:#fff;padding:9px 11px;border:1px solid #d97700;text-align:left;">¿Para qué sirve?</th>
+                <th style="background:#FB8C00;color:#fff;padding:9px 11px;border:1px solid #d97700;text-align:center;width:14%;">¿Imprescindible?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background:#fffaf3;"><td style="padding:9px 11px;border:1px solid #ffe0b2;">Contact Form 7</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td></tr>
+              <tr style="background:#fff3e0;"><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td></tr>
+              <tr style="background:#fffaf3;"><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </details>
+
+    <div style="margin-top:22px;border:2px solid #FB8C0020;border-radius:10px;padding:16px 20px;background:#fffdf8;">
+      <strong style="color:#b35900;font-size:0.95rem;">📎 El documento debe contener</strong>
+      <ul style="margin:8px 0 0;padding-left:20px;font-size:0.9rem;">
+        <li>Las tres respuestas de la lectura de arranque.</li>
+        <li>Captura de Apariencia &gt; Temas con Astra activo.</li>
+        <li>Captura de Plugins instalados.</li>
+        <li>Captura de la web pública con menú y pie de página.</li>
+        <li>Inventario razonado de plugins (Anexo C).</li>
+      </ul>
+    </div>
+
+    <div style="margin-top:26px;border-top:4px solid #FB8C00;padding-top:18px;">
+      <h4 style="margin:0 0 4px;color:#b35900;font-size:1rem;">📊 Rúbrica · Práctica 3</h4>
+      <p style="margin:0 0 12px;font-size:0.82rem;color:#5a7184;">Tres ítems a partes iguales. Nota mínima: 5/10.</p>
+      <div style="overflow-x:auto;">
+        <table style="width:100%;font-size:0.76rem;">
+          <thead>
+            <tr>
+              <th style="background:#FB8C00;color:#fff;padding:8px;border:1px solid #d97700;text-align:left;">Aspecto</th>
+              <th style="background:#FB8C00;color:#fff;padding:8px;border:1px solid #d97700;text-align:center;width:7%;">Peso</th>
+              <th style="background:#43A047;color:#fff;padding:8px;border:1px solid #d97700;">Nivel experto (9–10)</th>
+              <th style="background:#7CB342;color:#fff;padding:8px;border:1px solid #d97700;">Nivel avanzado (7–8)</th>
+              <th style="background:#FBC02D;color:#fff;padding:8px;border:1px solid #d97700;">Nivel suficiente (5–6)</th>
+              <th style="background:#F4511E;color:#fff;padding:8px;border:1px solid #d97700;">Nivel inicial (3–4)</th>
+              <th style="background:#C62828;color:#fff;padding:8px;border:1px solid #d97700;">Nivel no alcanzado (0–2)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#fffaf3;">
+              <td style="padding:8px;border:1px solid #ffe0b2;font-weight:700;">Ejecución técnica del procedimiento</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;text-align:center;font-weight:700;">33%</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Tema, personalización, menú, plugin y widget funcionando sin errores y sin ayuda.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Ejecuta todo con alguna consulta puntual.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Completa la mayoría con apoyo del docente.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Faltan pasos clave o hay errores de configuración.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">No personaliza ni instala elementos.</td>
+            </tr>
+            <tr style="background:#fff3e0;">
+              <td style="padding:8px;border:1px solid #ffe0b2;font-weight:700;">Documentación, evidencias y respuestas de la lectura</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;text-align:center;font-weight:700;">33%</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Todas las capturas, inventario completo y respuestas ricas y bien redactadas.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Casi todas las evidencias; respuestas correctas.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Evidencias incompletas o respuestas breves.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Faltan capturas y varias respuestas.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">No documenta ni responde.</td>
+            </tr>
+            <tr style="background:#fffaf3;">
+              <td style="padding:8px;border:1px solid #ffe0b2;font-weight:700;">Justificación, autonomía y reflexión</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;text-align:center;font-weight:700;">34%</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Justifica cada plugin instalado y descarta los innecesarios con argumentos sólidos.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Justificación correcta y bien redactada.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Justificación básica o poco argumentada.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Justificación muy pobre.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">No hay justificación.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</details>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PRÁCTICA 4
+     ═══════════════════════════════════════════════════════════ -->
+<details id="p4" style="background:#fff;border:1px solid #ffe0b2;border-radius:14px;margin-top:22px;overflow:hidden;box-shadow:0 2px 10px rgba(251,140,0,.06);">
+  <summary style="cursor:pointer;list-style:none;background:linear-gradient(135deg,#FB8C00,#d97700);color:#fff;padding:20px 24px;">
+    <span style="display:inline-block;background:rgba(255,255,255,0.22);font-size:0.7rem;font-weight:800;letter-spacing:.5px;padding:4px 12px;border-radius:999px;margin-bottom:8px;">Práctica 04 · CE f) y h)</span>
+    <span style="display:block;font-size:1.1rem;font-weight:800;line-height:1.3;">🔒 Actualizar el CMS y activar los mecanismos de seguridad</span>
+  </summary>
+  <div style="padding:22px 26px;">
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:#FB8C0020;border:1px solid #FB8C0020;border-radius:10px;overflow:hidden;margin-bottom:20px;">
+      <div style="background:#fff3e0;padding:12px 14px;"><div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:.5px;color:#b35900;font-weight:800;">Modalidad</div><div style="font-size:0.9rem;font-weight:700;">Individual</div></div>
+      <div style="background:#fff3e0;padding:12px 14px;"><div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:.5px;color:#b35900;font-weight:800;">Duración</div><div style="font-size:0.9rem;font-weight:700;">60 min</div></div>
+      <div style="background:#fff3e0;padding:12px 14px;"><div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:.5px;color:#b35900;font-weight:800;">Archivo</div><div style="font-size:0.9rem;font-weight:700;">UD1_P4_apellidos_nombre</div></div>
+      <div style="background:#fff3e0;padding:12px 14px;"><div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:.5px;color:#b35900;font-weight:800;">Formato admitido</div><div style="font-size:0.9rem;font-weight:700;">PDF · DOCX · ODT</div></div>
+    </div>
+
+    <div style="background:#fff3e0;border-left:6px solid #FB8C00;border-radius:0 12px 12px 0;padding:18px 22px;margin-bottom:20px;">
+      <span style="display:inline-block;font-size:0.7rem;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:#b35900;margin-bottom:8px;">📖 Lectura de arranque</span>
+      <h3 style="margin:0 0 6px;font-size:1.05rem;color:#7a3d00;">«Por qué actualizar un CMS no es opcional»</h3>
+      <p style="font-size:0.78rem;color:#8a6a4a;font-style:italic;margin:0 0 10px;">Fuente: INCIBE — Instituto Nacional de Ciberseguridad (avisos y guías de seguridad web).</p>
+      <p style="margin:0 0 12px;font-size:0.9rem;">La mayoría de los sitios web comprometidos no lo fueron por un ataque sofisticado, sino por tener el gestor o alguno de sus plugins sin actualizar. Los atacantes automatizan el escaneo buscando versiones vulnerables conocidas. Actualizar es la medida de seguridad con mejor relación coste-beneficio que existe.</p>
+      <p style="font-weight:800;color:#7a3d00;margin:0 0 6px;font-size:0.9rem;">✏️ Preguntas de comprensión lectora</p>
+      <ol style="margin:0 0 10px;padding-left:22px;font-size:0.88rem;">
+        <li>¿Cuál es el motivo más habitual por el que una web resulta comprometida?</li>
+        <li>¿Por qué es tan importante actualizar también los plugins y no solo el núcleo?</li>
+        <li>¿Qué debe hacerse siempre antes de aplicar una actualización en producción?</li>
+      </ol>
+      <p style="margin:0;font-size:0.8rem;font-style:italic;color:#8a6a4a;">Estas tres respuestas se incluyen obligatoriamente en el documento que subes a la tarea.</p>
+    </div>
+
+    <p style="background:#fff3e0;border-radius:8px;padding:12px 16px;font-size:0.9rem;margin:0 0 18px;"><strong>🎯 Objetivo.</strong> Ejecutar la rutina completa de actualización y configurar al menos cuatro medidas de seguridad propias del gestor.</p>
+
+    <h4 style="margin:0 0 8px;color:#b35900;font-size:1rem;">🧰 Materiales necesarios</h4>
+    <ul style="margin:0 0 22px;padding-left:22px;font-size:0.9rem;">
+      <li>CMS en funcionamiento con sesión de Administrador.</li>
+      <li>Conexión a Internet.</li>
+      <li>Cuaderno de registro (bitácora) para anotar cada cambio realizado.</li>
+      <li>Copia de seguridad previa (si aún no existe, crear una carpeta de respaldo manual).</li>
+    </ul>
+
+    <h4 style="margin:0 0 10px;color:#b35900;font-size:1rem;">🛠️ Desarrollo paso a paso</h4>
+    <div style="border-left:6px solid #FB8C0020;padding-left:18px;">
+
+      <p style="margin:0 0 6px;font-weight:800;color:#7a3d00;font-size:0.92rem;">Paso 1 · Inventariar versiones y copia previa</p>
+      <ol style="margin:0 0 12px;padding-left:22px;font-size:0.9rem;">
+        <li>En el panel, entra en <strong>Escritorio &gt; Actualizaciones</strong>.</li>
+        <li>Anota en la bitácora del <strong>Anexo C</strong>: versión actual del núcleo, plugins con actualización pendiente y temas con actualización pendiente.</li>
+        <li>Entra en <strong>Plugins &gt; Plugins instalados</strong> y anota la versión de cada uno.</li>
+        <li>Realiza una copia de seguridad completa del sitio antes de tocar nada.</li>
+      </ol>
+      <div style="background:#e8f5e9;border-left:5px solid #43A047;border-radius:0 8px 8px 0;padding:10px 16px;margin-bottom:18px;font-size:0.88rem;color:#1b5e20;"><strong>✅ PC 1.</strong> La bitácora recoge la versión del núcleo, la lista de plugins con su versión y existe una copia de seguridad fechada antes de empezar.</div>
+
+      <p style="margin:0 0 6px;font-weight:800;color:#7a3d00;font-size:0.92rem;">Paso 2 · Actualizar plugins y temas (uno a uno)</p>
+      <ol style="margin:0 0 12px;padding-left:22px;font-size:0.9rem;">
+        <li>En <strong>Plugins &gt; Plugins instalados</strong>, localiza el primer plugin con aviso de actualización.</li>
+        <li>Pulsa <strong>Actualizar ahora</strong> y espera a que termine.</li>
+        <li>Abre la web pública en otra pestaña y comprueba que sigue cargando correctamente.</li>
+        <li>Repite los tres pasos anteriores con cada plugin pendiente, de uno en uno.</li>
+        <li>Entra en <strong>Apariencia &gt; Temas</strong> y actualiza los temas con aviso pendiente.</li>
+      </ol>
+      <div style="background:#e8f5e9;border-left:5px solid #43A047;border-radius:0 8px 8px 0;padding:10px 16px;margin-bottom:18px;font-size:0.88rem;color:#1b5e20;"><strong>✅ PC 2.</strong> No queda ningún aviso de actualización en Plugins ni en Temas, y la web pública sigue funcionando tras cada actualización.</div>
+
+      <p style="margin:0 0 6px;font-weight:800;color:#7a3d00;font-size:0.92rem;">Paso 3 · Actualizar el núcleo del CMS</p>
+      <ol style="margin:0 0 12px;padding-left:22px;font-size:0.9rem;">
+        <li>Entra en <strong>Escritorio &gt; Actualizaciones</strong>.</li>
+        <li>Pulsa <strong>Actualizar ahora</strong> en el bloque del núcleo.</li>
+        <li>Espera a que el proceso finalice sin cerrar la pestaña.</li>
+        <li>Comprueba en la esquina inferior del panel que la versión mostrada es la nueva.</li>
+        <li>Recorre la web pública: portada, una entrada y la página de contacto.</li>
+      </ol>
+      <div style="background:#e8f5e9;border-left:5px solid #43A047;border-radius:0 8px 8px 0;padding:10px 16px;margin-bottom:18px;font-size:0.88rem;color:#1b5e20;"><strong>✅ PC 3.</strong> El panel muestra la nueva versión del núcleo y las tres páginas comprobadas cargan sin errores.</div>
+
+      <p style="margin:0 0 6px;font-weight:800;color:#7a3d00;font-size:0.92rem;">Paso 4 · Activar los mecanismos de seguridad del gestor</p>
+      <ol style="margin:0 0 12px;padding-left:22px;font-size:0.9rem;">
+        <li>Instala y activa un plugin de seguridad (por ejemplo <em>Wordfence</em> o <em>Limit Login Attempts</em>).</li>
+        <li>Configura el <strong>límite de intentos de acceso</strong> en 3 intentos y bloqueo de 20 minutos.</li>
+        <li>Activa la <strong>autenticación en dos pasos (2FA)</strong> para la cuenta de administración.</li>
+        <li>Crea un usuario administrador nuevo con nombre no predecible y elimina o degrada la cuenta <code style="background:#fff3e0;padding:1px 5px;border-radius:4px;">admin</code>.</li>
+        <li>Activa el aviso de <strong>actualizaciones automáticas de seguridad</strong>.</li>
+        <li>En <em>Ajustes &gt; Comentarios</em>, activa la moderación manual previa a la publicación.</li>
+      </ol>
+      <div style="background:#e8f5e9;border-left:5px solid #43A047;border-radius:0 8px 8px 0;padding:10px 16px;margin-bottom:18px;font-size:0.88rem;color:#1b5e20;"><strong>✅ PC 4.</strong> Al intentar acceder con una contraseña incorrecta tres veces seguidas, el sistema bloquea el acceso; el 2FA está activo y ya no existe ningún usuario llamado <code>admin</code>.</div>
+
+      <p style="margin:0 0 6px;font-weight:800;color:#7a3d00;font-size:0.92rem;">Paso 5 · Redactar el informe de seguridad</p>
+      <ol style="margin:0 0 12px;padding-left:22px;font-size:0.9rem;">
+        <li>Crea un documento titulado <em>Informe de actualización y seguridad</em>.</li>
+        <li>Incluye una tabla con: elemento actualizado, versión anterior y versión nueva.</li>
+        <li>Incluye otra tabla con: medida de seguridad aplicada y para qué sirve.</li>
+        <li>Añade capturas de la pantalla de bloqueo por intentos y del 2FA activo.</li>
+        <li>Guarda en PDF y súbelo a Moodle Centros en la tarea «Práctica 4».</li>
+      </ol>
+      <div style="background:#e8f5e9;border-left:5px solid #43A047;border-radius:0 8px 8px 0;padding:10px 16px;margin-bottom:8px;font-size:0.88rem;color:#1b5e20;"><strong>✅ PC 5.</strong> El informe está entregado en Moodle Centros con las dos tablas completas y las capturas de evidencia.</div>
+    </div>
+
+    <div style="background:#fdecea;border-left:5px solid #C62828;border-radius:0 9px 9px 0;padding:14px 18px;font-size:0.88rem;color:#7a1c1c;margin-top:18px;">
+      <strong>⚠️ Errores comunes</strong>
+      <ul style="margin:8px 0 0;padding-left:20px;">
+        <li><strong>Actualizar todo a la vez y que la web se rompa:</strong> actualiza siempre uno a uno y comprueba el resultado después de cada cambio.</li>
+        <li><strong>Actualizar sin copia de seguridad:</strong> nunca lo hagas. Sin copia, un fallo puede dejar el sitio irrecuperable.</li>
+        <li><strong>Bloquearte a ti mismo con el límite de intentos:</strong> anota la IP de exclusión o espera al desbloqueo automático.</li>
+        <li><strong>Perder el acceso tras activar 2FA:</strong> guarda los códigos de recuperación en lugar seguro antes de cerrar la sesión.</li>
+        <li><strong>Eliminar el usuario admin sin crear otro administrador:</strong> crea y verifica la nueva cuenta ANTES de borrar la antigua.</li>
+      </ul>
+    </div>
+
+    <details style="margin-top:22px;border:1px solid #ffe0b2;border-radius:10px;overflow:hidden;background:#fffdf8;">
+      <summary style="cursor:pointer;background:#fff3e0;color:#8a4a00;padding:14px 20px;font-weight:800;font-size:0.92rem;list-style:none;">📎 Anexo A · Código facilitado: wp-config.php (claves de seguridad)</summary>
+      <div style="padding:20px 24px;">
+        <p style="margin:0 0 12px;font-size:0.88rem;">Añade estos bloques al final de tu <code style="background:#fff3e0;padding:1px 5px;border-radius:4px;">wp-config.php</code>, antes de la línea <em>«That's all, stop editing!»</em>.</p>
+        <div style="background:#2b2b2b;color:#e8d9a8;font-family:Consolas,'Courier New',monospace;font-size:0.74rem;font-weight:700;padding:5px 12px;border-radius:8px 8px 0 0;display:inline-block;">wp-config.php</div>
+        <pre style="background:#1a1a1a;color:#f0e6d2;padding:15px 18px;border-radius:0 10px 10px 10px;overflow-x:auto;font-family:Consolas,'Courier New',monospace;font-size:0.8rem;line-height:1.55;margin:0;">// Claves de salting: hacen inservibles las cookies robadas
+define('AUTH_KEY',         'pon-aqui-una-cadena-aleatoria-unica');
+define('SECURE_AUTH_KEY',  'pon-aqui-otra-cadena-aleatoria-unica');
+define('LOGGED_IN_KEY',    'pon-aqui-otra-cadena-aleatoria-unica');
+define('NONCE_KEY',        'pon-aqui-otra-cadena-aleatoria-unica');
+
+// Forzar HTTPS en el panel de administración
+define('FORCE_SSL_ADMIN', true);
+
+// Desactivar la edición de archivos desde el panel
+define('DISALLOW_FILE_EDIT', true);
+
+// Limitar revisiones de entradas
+define('WP_POST_REVISIONS', 5);</pre>
+      </div>
+    </details>
+
+    <details style="margin-top:14px;border:1px solid #ffe0b2;border-radius:10px;overflow:hidden;background:#fffdf8;">
+      <summary style="cursor:pointer;background:#fff3e0;color:#8a4a00;padding:14px 20px;font-weight:800;font-size:0.92rem;list-style:none;">📎 Anexo B · Código facilitado: .htaccess (endurecimiento)</summary>
+      <div style="padding:20px 24px;">
+        <p style="margin:0 0 12px;font-size:0.88rem;">Añade este bloque al archivo <code style="background:#fff3e0;padding:1px 5px;border-radius:4px;">.htaccess</code> de la raíz del CMS.</p>
+        <div style="background:#2b2b2b;color:#e8d9a8;font-family:Consolas,'Courier New',monospace;font-size:0.74rem;font-weight:700;padding:5px 12px;border-radius:8px 8px 0 0;display:inline-block;">.htaccess</div>
+        <pre style="background:#1a1a1a;color:#f0e6d2;padding:15px 18px;border-radius:0 10px 10px 10px;overflow-x:auto;font-family:Consolas,'Courier New',monospace;font-size:0.8rem;line-height:1.55;margin:0;"># Proteger el archivo de configuración
+&lt;files wp-config.php&gt;
+    Order allow,deny
+    Deny from all
+&lt;/files&gt;
+
+# Desactivar el listado de directorios
+Options -Indexes
+
+# Bloquear el acceso directo a los archivos PHP de wp-content
+&lt;Directory "wp-content/uploads"&gt;
+    php_flag engine off
+&lt;/Directory&gt;</pre>
+      </div>
+    </details>
+
+    <details style="margin-top:14px;border:1px solid #ffe0b2;border-radius:10px;overflow:hidden;background:#fffdf8;">
+      <summary style="cursor:pointer;background:#fff3e0;color:#8a4a00;padding:14px 20px;font-weight:800;font-size:0.92rem;list-style:none;">📎 Anexo C · Plantilla de bitácora de actualizaciones</summary>
+      <div style="padding:20px 24px;">
+        <p style="margin:0 0 12px;font-size:0.88rem;">Anota cada elemento antes y después de actualizarlo. Añade tantas filas como elementos tengas.</p>
+        <div style="overflow-x:auto;">
+          <table style="width:100%;font-size:0.82rem;">
+            <thead>
+              <tr>
+                <th style="background:#FB8C00;color:#fff;padding:9px 11px;border:1px solid #d97700;text-align:left;">Elemento</th>
+                <th style="background:#FB8C00;color:#fff;padding:9px 11px;border:1px solid #d97700;text-align:center;">Versión anterior</th>
+                <th style="background:#FB8C00;color:#fff;padding:9px 11px;border:1px solid #d97700;text-align:center;">Versión nueva</th>
+                <th style="background:#FB8C00;color:#fff;padding:9px 11px;border:1px solid #d97700;text-align:center;">Fecha</th>
+                <th style="background:#FB8C00;color:#fff;padding:9px 11px;border:1px solid #d97700;text-align:center;">¿Web OK?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background:#fffaf3;"><td style="padding:9px 11px;border:1px solid #ffe0b2;font-weight:700;">Núcleo del CMS</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td></tr>
+              <tr style="background:#fff3e0;"><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td></tr>
+              <tr style="background:#fffaf3;"><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td></tr>
+              <tr style="background:#fff3e0;"><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </details>
+
+    <div style="margin-top:22px;border:2px solid #FB8C0020;border-radius:10px;padding:16px 20px;background:#fffdf8;">
+      <strong style="color:#b35900;font-size:0.95rem;">📎 El documento debe contener</strong>
+      <ul style="margin:8px 0 0;padding-left:20px;font-size:0.9rem;">
+        <li>Las tres respuestas de la lectura de arranque.</li>
+        <li>Bitácora de actualizaciones completa (Anexo C).</li>
+        <li>Tabla de medidas de seguridad aplicadas y para qué sirven.</li>
+        <li>Captura del bloqueo por intentos fallidos y del 2FA activo.</li>
+        <li>Reflexión final sobre el riesgo de no actualizar.</li>
+      </ul>
+    </div>
+
+    <div style="margin-top:26px;border-top:4px solid #FB8C00;padding-top:18px;">
+      <h4 style="margin:0 0 4px;color:#b35900;font-size:1rem;">📊 Rúbrica · Práctica 4</h4>
+      <p style="margin:0 0 12px;font-size:0.82rem;color:#5a7184;">Tres ítems a partes iguales. Nota mínima: 5/10.</p>
+      <div style="overflow-x:auto;">
+        <table style="width:100%;font-size:0.76rem;">
+          <thead>
+            <tr>
+              <th style="background:#FB8C00;color:#fff;padding:8px;border:1px solid #d97700;text-align:left;">Aspecto</th>
+              <th style="background:#FB8C00;color:#fff;padding:8px;border:1px solid #d97700;text-align:center;width:7%;">Peso</th>
+              <th style="background:#43A047;color:#fff;padding:8px;border:1px solid #d97700;">Nivel experto (9–10)</th>
+              <th style="background:#7CB342;color:#fff;padding:8px;border:1px solid #d97700;">Nivel avanzado (7–8)</th>
+              <th style="background:#FBC02D;color:#fff;padding:8px;border:1px solid #d97700;">Nivel suficiente (5–6)</th>
+              <th style="background:#F4511E;color:#fff;padding:8px;border:1px solid #d97700;">Nivel inicial (3–4)</th>
+              <th style="background:#C62828;color:#fff;padding:8px;border:1px solid #d97700;">Nivel no alcanzado (0–2)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#fffaf3;">
+              <td style="padding:8px;border:1px solid #ffe0b2;font-weight:700;">Ejecución técnica del procedimiento</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;text-align:center;font-weight:700;">33%</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Actualiza todo sin romper el sitio y activa 4+ medidas de seguridad sin ayuda.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Ejecuta todo con alguna consulta puntual.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Completa con apoyo del docente.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Actualiza sin control o deja medidas sin activar.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">No actualiza ni configura seguridad.</td>
+            </tr>
+            <tr style="background:#fff3e0;">
+              <td style="padding:8px;border:1px solid #ffe0b2;font-weight:700;">Documentación, evidencias y respuestas de la lectura</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;text-align:center;font-weight:700;">33%</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Bitácora completa, tablas ricas y respuestas bien argumentadas.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Casi todas las evidencias; respuestas correctas.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Evidencias incompletas o respuestas breves.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Faltan capturas y varias respuestas.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">No documenta ni responde.</td>
+            </tr>
+            <tr style="background:#fffaf3;">
+              <td style="padding:8px;border:1px solid #ffe0b2;font-weight:700;">Justificación, autonomía y reflexión</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;text-align:center;font-weight:700;">34%</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Justifica cada medida y anticipa riesgos con criterio profesional.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Justificación correcta y bien redactada.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Justificación básica o poco argumentada.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Justificación muy pobre.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">No hay justificación.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</details>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PRÁCTICA 5
+     ═══════════════════════════════════════════════════════════ -->
+<details id="p5" style="background:#fff;border:1px solid #ffe0b2;border-radius:14px;margin-top:22px;overflow:hidden;box-shadow:0 2px 10px rgba(251,140,0,.06);">
+  <summary style="cursor:pointer;list-style:none;background:linear-gradient(135deg,#FB8C00,#d97700);color:#fff;padding:20px 24px;">
+    <span style="display:inline-block;background:rgba(255,255,255,0.22);font-size:0.7rem;font-weight:800;letter-spacing:.5px;padding:4px 12px;border-radius:999px;margin-bottom:8px;">Práctica 05 · CE i)</span>
+    <span style="display:block;font-size:1.1rem;font-weight:800;line-height:1.3;">💬 Habilitar un foro y establecer sus reglas de acceso</span>
+  </summary>
+  <div style="padding:22px 26px;">
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:#FB8C0020;border:1px solid #FB8C0020;border-radius:10px;overflow:hidden;margin-bottom:20px;">
+      <div style="background:#fff3e0;padding:12px 14px;"><div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:.5px;color:#b35900;font-weight:800;">Modalidad</div><div style="font-size:0.9rem;font-weight:700;">Individual</div></div>
+      <div style="background:#fff3e0;padding:12px 14px;"><div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:.5px;color:#b35900;font-weight:800;">Duración</div><div style="font-size:0.9rem;font-weight:700;">55 min</div></div>
+      <div style="background:#fff3e0;padding:12px 14px;"><div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:.5px;color:#b35900;font-weight:800;">Archivo</div><div style="font-size:0.9rem;font-weight:700;">UD1_P5_apellidos_nombre</div></div>
+      <div style="background:#fff3e0;padding:12px 14px;"><div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:.5px;color:#b35900;font-weight:800;">Formato admitido</div><div style="font-size:0.9rem;font-weight:700;">PDF · DOCX · ODT</div></div>
+    </div>
+
+    <div style="background:#fff3e0;border-left:6px solid #FB8C00;border-radius:0 12px 12px 0;padding:18px 22px;margin-bottom:20px;">
+      <span style="display:inline-block;font-size:0.7rem;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:#b35900;margin-bottom:8px;">📖 Lectura de arranque</span>
+      <h3 style="margin:0 0 6px;font-size:1.05rem;color:#7a3d00;">«Moderación de foros: participación ordenada y segura»</h3>
+      <p style="font-size:0.78rem;color:#8a6a4a;font-style:italic;margin:0 0 10px;">Fuente: Documentación oficial de bbPress (bbpress.org) y documentación de Moodle.</p>
+      <p style="margin:0 0 12px;font-size:0.9rem;">Un foro es un espacio de comunicación asíncrona donde las personas publican mensajes y responden en hilos. Para que funcione no basta con activarlo: hay que definir quién puede leer, quién puede escribir y quién puede moderar. Sin reglas de acceso claras, un foro se convierte en un foco de spam y de conflictos.</p>
+      <p style="font-weight:800;color:#7a3d00;margin:0 0 6px;font-size:0.9rem;">✏️ Preguntas de comprensión lectora</p>
+      <ol style="margin:0 0 10px;padding-left:22px;font-size:0.88rem;">
+        <li>¿Qué tres tipos de permisos mínimos hay que definir en un foro?</li>
+        <li>¿Por qué la moderación previa es recomendable en foros educativos?</li>
+        <li>¿Qué datos personales no deberían publicarse nunca en un foro público?</li>
+      </ol>
+      <p style="margin:0;font-size:0.8rem;font-style:italic;color:#8a6a4a;">Estas tres respuestas se incluyen obligatoriamente en el documento que subes a la tarea.</p>
+    </div>
+
+    <p style="background:#fff3e0;border-radius:8px;padding:12px 16px;font-size:0.9rem;margin:0 0 18px;"><strong>🎯 Objetivo.</strong> Instalar un módulo de foro, crear un foro y definir reglas de acceso verificables por roles.</p>
+
+    <h4 style="margin:0 0 8px;color:#b35900;font-size:1rem;">🧰 Materiales necesarios</h4>
+    <ul style="margin:0 0 22px;padding-left:22px;font-size:0.9rem;">
+      <li>CMS en funcionamiento con la sesión de Administrador abierta.</li>
+      <li>Los usuarios <code style="background:#fff3e0;padding:1px 5px;border-radius:4px;">alumno01</code> (Colaborador) y <code>alumno03</code> (Suscriptor) creados en la Práctica 2.</li>
+      <li>Ventana de navegación privada para probar los permisos.</li>
+      <li>Documento de normas del foro (Anexo A).</li>
+    </ul>
+
+    <h4 style="margin:0 0 10px;color:#b35900;font-size:1rem;">🛠️ Desarrollo paso a paso</h4>
+    <div style="border-left:6px solid #FB8C0020;padding-left:18px;">
+
+      <p style="margin:0 0 6px;font-weight:800;color:#7a3d00;font-size:0.92rem;">Paso 1 · Instalar y activar el módulo de foro</p>
+      <ol style="margin:0 0 12px;padding-left:22px;font-size:0.9rem;">
+        <li>En el panel, pulsa <strong>Plugins &gt; Añadir nuevo</strong>.</li>
+        <li>En el buscador escribe <code style="background:#fff3e0;padding:1px 5px;border-radius:4px;">bbPress</code>.</li>
+        <li>Pulsa <strong>Instalar ahora</strong> y después <strong>Activar</strong>.</li>
+        <li>Comprueba que aparece un nuevo menú <strong>Foros</strong> en la barra lateral.</li>
+      </ol>
+      <div style="background:#e8f5e9;border-left:5px solid #43A047;border-radius:0 8px 8px 0;padding:10px 16px;margin-bottom:18px;font-size:0.88rem;color:#1b5e20;"><strong>✅ PC 1.</strong> El menú «Foros» es visible en la barra lateral del panel de administración.</div>
+
+      <p style="margin:0 0 6px;font-weight:800;color:#7a3d00;font-size:0.92rem;">Paso 2 · Crear un foro de dudas del módulo</p>
+      <ol style="margin:0 0 12px;padding-left:22px;font-size:0.9rem;">
+        <li>Pulsa <strong>Foros &gt; Añadir nuevo</strong>.</li>
+        <li>En el título escribe <code style="background:#fff3e0;padding:1px 5px;border-radius:4px;">Dudas de Aplicaciones Web — UD1</code>.</li>
+        <li>En el contenido escribe: <em>Foro para resolver dudas sobre la instalación y configuración de gestores de contenidos.</em></li>
+        <li>En <em>Atributos del foro &gt; Tipo</em>, selecciona <strong>Foro</strong>.</li>
+        <li>En <em>Acceso</em>, selecciona <strong>Privado</strong> (solo usuarios registrados).</li>
+        <li>Pulsa <strong>Publicar</strong>.</li>
+      </ol>
+      <div style="background:#e8f5e9;border-left:5px solid #43A047;border-radius:0 8px 8px 0;padding:10px 16px;margin-bottom:18px;font-size:0.88rem;color:#1b5e20;"><strong>✅ PC 2.</strong> En <em>Foros &gt; Todos los foros</em> aparece el foro creado con acceso «Privado».</div>
+
+      <p style="margin:0 0 6px;font-weight:800;color:#7a3d00;font-size:0.92rem;">Paso 3 · Definir las reglas de acceso por rol</p>
+      <ol style="margin:0 0 12px;padding-left:22px;font-size:0.9rem;">
+        <li>Crea una página nueva titulada <code style="background:#fff3e0;padding:1px 5px;border-radius:4px;">Normas del foro</code>.</li>
+        <li>Redacta y pega las cinco normas del <strong>Anexo A</strong>.</li>
+        <li>Publica la página.</li>
+        <li>Entra en <strong>Ajustes &gt; Foros &gt; Moderación</strong> y activa la <strong>moderación previa</strong> de todos los mensajes.</li>
+        <li>En <strong>Foros &gt; Ajustes del foro</strong>, asigna el rol de moderador al usuario que corresponda.</li>
+      </ol>
+      <div style="background:#e8f5e9;border-left:5px solid #43A047;border-radius:0 8px 8px 0;padding:10px 16px;margin-bottom:18px;font-size:0.88rem;color:#1b5e20;"><strong>✅ PC 3.</strong> La página «Normas del foro» es pública y la moderación previa está activada en los ajustes del foro.</div>
+
+      <p style="margin:0 0 6px;font-weight:800;color:#7a3d00;font-size:0.92rem;">Paso 4 · Probar los permisos con distintos roles</p>
+      <ol style="margin:0 0 12px;padding-left:22px;font-size:0.9rem;">
+        <li>Abre una ventana privada e inicia sesión con <code style="background:#fff3e0;padding:1px 5px;border-radius:4px;">alumno03</code> (Suscriptor).</li>
+        <li>Intenta abrir un tema nuevo en el foro y anota si el sistema lo permite o lo bloquea.</li>
+        <li>Cierra la ventana privada y repite con <code>alumno01</code> (Colaborador).</li>
+        <li>Crea un tema de prueba titulado <code>Prueba de funcionamiento</code>.</li>
+        <li>Vuelve como Administrador y comprueba que el tema aparece <strong>pendiente de moderación</strong>.</li>
+        <li>Aprueba el mensaje y verifica que ya es visible públicamente.</li>
+        <li>Rellena la tabla de verificación del <strong>Anexo C</strong>.</li>
+      </ol>
+      <div style="background:#e8f5e9;border-left:5px solid #43A047;border-radius:0 8px 8px 0;padding:10px 16px;margin-bottom:18px;font-size:0.88rem;color:#1b5e20;"><strong>✅ PC 4.</strong> Se ha verificado por escrito qué rol puede y qué rol no puede publicar, y un mensaje ha pasado por el flujo completo de moderación.</div>
+
+      <p style="margin:0 0 6px;font-weight:800;color:#7a3d00;font-size:0.92rem;">Paso 5 · Documentar la configuración del foro</p>
+      <ol style="margin:0 0 12px;padding-left:22px;font-size:0.9rem;">
+        <li>Haz una captura de la lista de foros.</li>
+        <li>Haz una captura de los ajustes de moderación activados.</li>
+        <li>Haz una captura del mensaje pendiente de moderación.</li>
+        <li>Redacta un párrafo explicando qué reglas de acceso has definido y por qué.</li>
+        <li>Guarda en PDF y súbelo a Moodle Centros en la tarea «Práctica 5».</li>
+      </ol>
+      <div style="background:#e8f5e9;border-left:5px solid #43A047;border-radius:0 8px 8px 0;padding:10px 16px;margin-bottom:8px;font-size:0.88rem;color:#1b5e20;"><strong>✅ PC 5.</strong> El PDF con las tres capturas y la justificación está entregado en Moodle Centros.</div>
+    </div>
+
+    <div style="background:#fdecea;border-left:5px solid #C62828;border-radius:0 9px 9px 0;padding:14px 18px;font-size:0.88rem;color:#7a1c1c;margin-top:18px;">
+      <strong>⚠️ Errores comunes</strong>
+      <ul style="margin:8px 0 0;padding-left:20px;">
+        <li><strong>El foro no aparece en el menú público:</strong> faltan las páginas de foro. Crea las páginas «Foros» e «Índice de foros» y asigna sus códigos cortos.</li>
+        <li><strong>Los suscriptores no pueden escribir:</strong> revisa las capacidades del rol en la configuración del foro.</li>
+        <li><strong>Los mensajes no se publican nunca:</strong> están esperando moderación. Revísalos en <em>Foros &gt; Temas pendientes</em>.</li>
+        <li><strong>Aparece spam rápidamente:</strong> activa la moderación previa y añade una pregunta de verificación para usuarios nuevos.</li>
+      </ul>
+    </div>
+
+    <details style="margin-top:22px;border:1px solid #ffe0b2;border-radius:10px;overflow:hidden;background:#fffdf8;">
+      <summary style="cursor:pointer;background:#fff3e0;color:#8a4a00;padding:14px 20px;font-weight:800;font-size:0.92rem;list-style:none;">📎 Anexo A · Normas del foro (redactadas para publicar)</summary>
+      <div style="padding:20px 24px;">
+        <p style="margin:0 0 12px;font-size:0.88rem;">Copia estas normas tal cual en la página <em>Normas del foro</em>. La sexta norma queda pendiente de consensuar con el grupo.</p>
+        <ol style="margin:0;padding-left:22px;font-size:0.9rem;">
+          <li>Escribe siempre con respeto y educación. No se permiten insultos ni descalificaciones.</li>
+          <li>Antes de preguntar, busca si tu duda ya está resuelta en otro hilo.</li>
+          <li>No publiques datos personales propios ni de terceros.</li>
+          <li>Los mensajes pueden ser moderados antes de su publicación.</li>
+          <li>El incumplimiento reiterado de las normas implica la pérdida del acceso al foro.</li>
+          <li><em>(A consensuar en clase.)</em> ______________________________________________</li>
+        </ol>
+      </div>
+    </details>
+
+    <details style="margin-top:14px;border:1px solid #ffe0b2;border-radius:10px;overflow:hidden;background:#fffdf8;">
+      <summary style="cursor:pointer;background:#fff3e0;color:#8a4a00;padding:14px 20px;font-weight:800;font-size:0.92rem;list-style:none;">📎 Anexo B · Código facilitado: capacidades del foro por rol</summary>
+      <div style="padding:20px 24px;">
+        <p style="margin:0 0 12px;font-size:0.88rem;">Bloque opcional para el archivo <code style="background:#fff3e0;padding:1px 5px;border-radius:4px;">functions.php</code> del tema hijo.</p>
+        <div style="background:#2b2b2b;color:#e8d9a8;font-family:Consolas,'Courier New',monospace;font-size:0.74rem;font-weight:700;padding:5px 12px;border-radius:8px 8px 0 0;display:inline-block;">functions.php</div>
+        <pre style="background:#1a1a1a;color:#f0e6d2;padding:15px 18px;border-radius:0 10px 10px 10px;overflow-x:auto;font-family:Consolas,'Courier New',monospace;font-size:0.8rem;line-height:1.55;margin:0;">// Permitir que los suscriptores abran temas nuevos en el foro
+$rol = get_role('subscriber');
+$rol-&gt;add_cap('publish_topics');
+
+// Impedir que los suscriptores creen foros nuevos
+$rol = get_role('subscriber');
+$rol-&gt;remove_cap('publish_forums');
+
+// Forzar moderación previa en todos los foros
+add_filter('bbp_get_moderation', '__return_true');</pre>
+      </div>
+    </details>
+
+    <details style="margin-top:14px;border:1px solid #ffe0b2;border-radius:10px;overflow:hidden;background:#fffdf8;">
+      <summary style="cursor:pointer;background:#fff3e0;color:#8a4a00;padding:14px 20px;font-weight:800;font-size:0.92rem;list-style:none;">📎 Anexo C · Plantilla de verificación de permisos del foro</summary>
+      <div style="padding:20px 24px;">
+        <div style="overflow-x:auto;">
+          <table style="width:100%;font-size:0.82rem;">
+            <thead>
+              <tr>
+                <th style="background:#FB8C00;color:#fff;padding:9px 11px;border:1px solid #d97700;text-align:left;">Usuario / Rol</th>
+                <th style="background:#FB8C00;color:#fff;padding:9px 11px;border:1px solid #d97700;text-align:center;">¿Puede leer?</th>
+                <th style="background:#FB8C00;color:#fff;padding:9px 11px;border:1px solid #d97700;text-align:center;">¿Puede abrir tema?</th>
+                <th style="background:#FB8C00;color:#fff;padding:9px 11px;border:1px solid #d97700;text-align:center;">¿Puede moderar?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background:#fffaf3;"><td style="padding:9px 11px;border:1px solid #ffe0b2;font-weight:700;">alumno01 · Colaborador</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td></tr>
+              <tr style="background:#fff3e0;"><td style="padding:9px 11px;border:1px solid #ffe0b2;font-weight:700;">alumno03 · Suscriptor</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td></tr>
+              <tr style="background:#fffaf3;"><td style="padding:9px 11px;border:1px solid #ffe0b2;font-weight:700;">Administrador</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </details>
+
+    <div style="margin-top:22px;border:2px solid #FB8C0020;border-radius:10px;padding:16px 20px;background:#fffdf8;">
+      <strong style="color:#b35900;font-size:0.95rem;">📎 El documento debe contener</strong>
+      <ul style="margin:8px 0 0;padding-left:20px;font-size:0.9rem;">
+        <li>Las tres respuestas de la lectura de arranque.</li>
+        <li>Captura de la lista de foros.</li>
+        <li>Captura de los ajustes de moderación previa activados.</li>
+        <li>Captura del mensaje pendiente de moderación.</li>
+        <li>Tabla de verificación de permisos del foro cumplimentada (Anexo C).</li>
+        <li>Párrafo justificando las reglas de acceso definidas.</li>
+      </ul>
+    </div>
+
+    <div style="margin-top:26px;border-top:4px solid #FB8C00;padding-top:18px;">
+      <h4 style="margin:0 0 4px;color:#b35900;font-size:1rem;">📊 Rúbrica · Práctica 5</h4>
+      <p style="margin:0 0 12px;font-size:0.82rem;color:#5a7184;">Tres ítems a partes iguales. Nota mínima: 5/10.</p>
+      <div style="overflow-x:auto;">
+        <table style="width:100%;font-size:0.76rem;">
+          <thead>
+            <tr>
+              <th style="background:#FB8C00;color:#fff;padding:8px;border:1px solid #d97700;text-align:left;">Aspecto</th>
+              <th style="background:#FB8C00;color:#fff;padding:8px;border:1px solid #d97700;text-align:center;width:7%;">Peso</th>
+              <th style="background:#43A047;color:#fff;padding:8px;border:1px solid #d97700;">Nivel experto (9–10)</th>
+              <th style="background:#7CB342;color:#fff;padding:8px;border:1px solid #d97700;">Nivel avanzado (7–8)</th>
+              <th style="background:#FBC02D;color:#fff;padding:8px;border:1px solid #d97700;">Nivel suficiente (5–6)</th>
+              <th style="background:#F4511E;color:#fff;padding:8px;border:1px solid #d97700;">Nivel inicial (3–4)</th>
+              <th style="background:#C62828;color:#fff;padding:8px;border:1px solid #d97700;">Nivel no alcanzado (0–2)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#fffaf3;">
+              <td style="padding:8px;border:1px solid #ffe0b2;font-weight:700;">Ejecución técnica del procedimiento</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;text-align:center;font-weight:700;">33%</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Instala bbPress, crea foro, moderación previa y prueba con dos roles sin ayuda.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Ejecuta todo con alguna consulta puntual.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Completa con apoyo del docente.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Faltan pasos o moderación mal configurada.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">No instala ni configura el foro.</td>
+            </tr>
+            <tr style="background:#fff3e0;">
+              <td style="padding:8px;border:1px solid #ffe0b2;font-weight:700;">Documentación, evidencias y respuestas de la lectura</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;text-align:center;font-weight:700;">33%</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Todas las capturas, tabla completa y respuestas ricas y bien redactadas.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Casi todas las evidencias; respuestas correctas.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Evidencias incompletas o respuestas breves.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Faltan capturas y varias respuestas.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">No documenta ni responde.</td>
+            </tr>
+            <tr style="background:#fffaf3;">
+              <td style="padding:8px;border:1px solid #ffe0b2;font-weight:700;">Justificación, autonomía y reflexión</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;text-align:center;font-weight:700;">34%</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Justifica las reglas de acceso y la moderación previa relacionándolas con protección de datos.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Justificación correcta y bien redactada.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Justificación básica o poco argumentada.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Justificación muy pobre.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">No hay justificación.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</details>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PRÁCTICA 6
+     ═══════════════════════════════════════════════════════════ -->
+<details id="p6" style="background:#fff;border:1px solid #ffe0b2;border-radius:14px;margin-top:22px;overflow:hidden;box-shadow:0 2px 10px rgba(251,140,0,.06);">
+  <summary style="cursor:pointer;list-style:none;background:linear-gradient(135deg,#FB8C00,#d97700);color:#fff;padding:20px 24px;">
+    <span style="display:inline-block;background:rgba(255,255,255,0.22);font-size:0.7rem;font-weight:800;letter-spacing:.5px;padding:4px 12px;border-radius:999px;margin-bottom:8px;">Práctica 06 · CE e), j) y k)</span>
+    <span style="display:block;font-size:1.1rem;font-weight:800;line-height:1.3;">💾 Ejecutar el plan de pruebas y realizar la copia de seguridad</span>
+  </summary>
+  <div style="padding:22px 26px;">
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:#FB8C0020;border:1px solid #FB8C0020;border-radius:10px;overflow:hidden;margin-bottom:20px;">
+      <div style="background:#fff3e0;padding:12px 14px;"><div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:.5px;color:#b35900;font-weight:800;">Modalidad</div><div style="font-size:0.9rem;font-weight:700;">Individual</div></div>
+      <div style="background:#fff3e0;padding:12px 14px;"><div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:.5px;color:#b35900;font-weight:800;">Duración</div><div style="font-size:0.9rem;font-weight:700;">60 min</div></div>
+      <div style="background:#fff3e0;padding:12px 14px;"><div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:.5px;color:#b35900;font-weight:800;">Archivo</div><div style="font-size:0.9rem;font-weight:700;">UD1_P6_apellidos_nombre</div></div>
+      <div style="background:#fff3e0;padding:12px 14px;"><div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:.5px;color:#b35900;font-weight:800;">Formato admitido</div><div style="font-size:0.9rem;font-weight:700;">PDF · DOCX · ODT</div></div>
+    </div>
+
+    <div style="background:#fff3e0;border-left:6px solid #FB8C00;border-radius:0 12px 12px 0;padding:18px 22px;margin-bottom:20px;">
+      <span style="display:inline-block;font-size:0.7rem;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:#b35900;margin-bottom:8px;">📖 Lectura de arranque</span>
+      <h3 style="margin:0 0 6px;font-size:1.05rem;color:#7a3d00;">«La regla 3-2-1: nunca pierdas tu web»</h3>
+      <p style="font-size:0.78rem;color:#8a6a4a;font-style:italic;margin:0 0 10px;">Fuente: INCIBE — Guía de copias de seguridad para pymes y autónomos.</p>
+      <p style="margin:0 0 12px;font-size:0.9rem;">La regla 3-2-1 dice que deben existir <strong>tres</strong> copias de los datos, en <strong>dos</strong> soportes diferentes y con <strong>una</strong> copia fuera de las instalaciones. En un CMS, la copia debe incluir siempre dos elementos inseparables: los archivos (temas, plugins, imágenes) y la base de datos (entradas, usuarios, ajustes).</p>
+      <p style="font-weight:800;color:#7a3d00;margin:0 0 6px;font-size:0.9rem;">✏️ Preguntas de comprensión lectora</p>
+      <ol style="margin:0 0 10px;padding-left:22px;font-size:0.88rem;">
+        <li>¿Qué significa exactamente la regla 3-2-1 aplicada a una web?</li>
+        <li>¿Por qué una copia que solo guarda los archivos no es suficiente?</li>
+        <li>¿Qué debe comprobarse siempre después de hacer una copia de seguridad?</li>
+      </ol>
+      <p style="margin:0;font-size:0.8rem;font-style:italic;color:#8a6a4a;">Estas tres respuestas se incluyen obligatoriamente en el documento que subes a la tarea.</p>
+    </div>
+
+    <p style="background:#fff3e0;border-radius:8px;padding:12px 16px;font-size:0.9rem;margin:0 0 18px;"><strong>🎯 Objetivo.</strong> Verificar sistemáticamente el funcionamiento del CMS y generar una copia de seguridad completa y restaurable.</p>
+
+    <h4 style="margin:0 0 8px;color:#b35900;font-size:1rem;">🧰 Materiales necesarios</h4>
+    <ul style="margin:0 0 22px;padding-left:22px;font-size:0.9rem;">
+      <li>CMS completamente configurado (Prácticas 1 a 5 terminadas).</li>
+      <li>Un plugin de copias de seguridad (por ejemplo <em>UpdraftPlus</em>).</li>
+      <li>Acceso a phpMyAdmin desde <code style="background:#fff3e0;padding:1px 5px;border-radius:4px;">http://localhost/phpmyadmin</code>.</li>
+      <li>Memoria USB o carpeta externa para la copia fuera del servidor.</li>
+      <li>Plantilla del plan de pruebas (Anexo A).</li>
+    </ul>
+
+    <h4 style="margin:0 0 10px;color:#b35900;font-size:1rem;">🛠️ Desarrollo paso a paso</h4>
+    <div style="border-left:6px solid #FB8C0020;padding-left:18px;">
+
+      <p style="margin:0 0 6px;font-weight:800;color:#7a3d00;font-size:0.92rem;">Paso 1 · Preparar la lista de comprobación</p>
+      <ol style="margin:0 0 12px;padding-left:22px;font-size:0.9rem;">
+        <li>Abre un documento nuevo y titúlalo <em>Plan de pruebas — UD1</em>.</li>
+        <li>Copia la tabla del <strong>Anexo A</strong>.</li>
+        <li>Guarda el documento.</li>
+      </ol>
+      <div style="background:#e8f5e9;border-left:5px solid #43A047;border-radius:0 8px 8px 0;padding:10px 16px;margin-bottom:18px;font-size:0.88rem;color:#1b5e20;"><strong>✅ PC 1.</strong> La tabla tiene las ocho filas y las tres columnas, y está guardada en tu equipo.</div>
+
+      <p style="margin:0 0 6px;font-weight:800;color:#7a3d00;font-size:0.92rem;">Paso 2 · Ejecutar las pruebas una a una</p>
+      <ol style="margin:0 0 12px;padding-left:22px;font-size:0.9rem;">
+        <li>Accede al panel con el usuario Administrador y comprueba que el escritorio carga.</li>
+        <li>Crea una entrada titulada <code style="background:#fff3e0;padding:1px 5px;border-radius:4px;">Prueba de funcionamiento</code>, publícala y visítala en la web pública.</li>
+        <li>Pulsa todos los enlaces del menú principal y anota si alguno falla.</li>
+        <li>Envía el formulario de contacto con datos de prueba.</li>
+        <li>Abre un tema nuevo en el foro y responde a él.</li>
+        <li>Sube una imagen a la biblioteca de medios.</li>
+        <li>Cambia los enlaces permanentes a formato «nombre de la entrada» y comprueba que no dan error 404.</li>
+        <li>Reduce la ventana del navegador al ancho de un móvil y revisa la portada.</li>
+        <li>Anota el resultado OK o Fallo de cada punto en la tabla.</li>
+      </ol>
+      <div style="background:#e8f5e9;border-left:5px solid #43A047;border-radius:0 8px 8px 0;padding:10px 16px;margin-bottom:18px;font-size:0.88rem;color:#1b5e20;"><strong>✅ PC 2.</strong> Los ocho elementos están evaluados con OK o Fallo y cada Fallo tiene una observación escrita.</div>
+
+      <p style="margin:0 0 6px;font-weight:800;color:#7a3d00;font-size:0.92rem;">Paso 3 · Exportar el contenido en formato XML</p>
+      <ol style="margin:0 0 12px;padding-left:22px;font-size:0.9rem;">
+        <li>En el panel, pulsa <strong>Herramientas &gt; Exportar</strong>.</li>
+        <li>Selecciona <strong>Todo el contenido</strong>.</li>
+        <li>Pulsa <strong>Descargar el archivo de exportación</strong>.</li>
+        <li>Guarda el archivo <code>.xml</code> en la carpeta <code>UD1_Backups</code> de tu equipo.</li>
+        <li>Anota el tamaño del archivo y la fecha de creación.</li>
+      </ol>
+      <div style="background:#e8f5e9;border-left:5px solid #43A047;border-radius:0 8px 8px 0;padding:10px 16px;margin-bottom:18px;font-size:0.88rem;color:#1b5e20;"><strong>✅ PC 3.</strong> Existe un archivo XML en tu carpeta de respaldos y su tamaño es mayor de 0 KB.</div>
+
+      <p style="margin:0 0 6px;font-weight:800;color:#7a3d00;font-size:0.92rem;">Paso 4 · Realizar la copia de seguridad completa</p>
+      <ol style="margin:0 0 12px;padding-left:22px;font-size:0.9rem;">
+        <li>Instala y activa el plugin <em>UpdraftPlus</em> desde <strong>Plugins &gt; Añadir nuevo</strong>.</li>
+        <li>Entra en <strong>Ajustes &gt; UpdraftPlus &gt; Copias de seguridad</strong>.</li>
+        <li>Pulsa el botón <strong>Hacer copia de seguridad ahora</strong>.</li>
+        <li>Marca las casillas <em>Base de datos</em> y <em>Archivos</em>.</li>
+        <li>Espera a que finalice el proceso y pulsa <strong>Descargar</strong> en cada componente.</li>
+        <li>Copia los archivos descargados a una memoria USB.</li>
+      </ol>
+      <div style="background:#e8f5e9;border-left:5px solid #43A047;border-radius:0 8px 8px 0;padding:10px 16px;margin-bottom:18px;font-size:0.88rem;color:#1b5e20;"><strong>✅ PC 4.</strong> Tienes en la memoria USB los archivos de copia de la base de datos y de los archivos del sitio, con fecha visible.</div>
+
+      <p style="margin:0 0 6px;font-weight:800;color:#7a3d00;font-size:0.92rem;">Paso 5 · Probar la restauración (prueba de fuego)</p>
+      <ol style="margin:0 0 12px;padding-left:22px;font-size:0.9rem;">
+        <li>Borra la entrada de prueba <code style="background:#fff3e0;padding:1px 5px;border-radius:4px;">Prueba de funcionamiento</code> del Paso 2.</li>
+        <li>Vacía la papelera de entradas para eliminarla definitivamente.</li>
+        <li>Entra en <strong>Ajustes &gt; UpdraftPlus &gt; Copias de seguridad existentes</strong>.</li>
+        <li>Pulsa <strong>Restaurar</strong> sobre la copia más reciente.</li>
+        <li>Selecciona los componentes a restaurar y confirma.</li>
+        <li>Comprueba que la entrada borrada vuelve a aparecer en la lista de entradas.</li>
+      </ol>
+      <div style="background:#e8f5e9;border-left:5px solid #43A047;border-radius:0 8px 8px 0;padding:10px 16px;margin-bottom:18px;font-size:0.88rem;color:#1b5e20;"><strong>✅ PC 5.</strong> La entrada eliminada ha sido recuperada correctamente tras la restauración, lo que demuestra que la copia es válida.</div>
+
+      <p style="margin:0 0 6px;font-weight:800;color:#7a3d00;font-size:0.92rem;">Paso 6 · Redactar el informe final de la unidad</p>
+      <ol style="margin:0 0 12px;padding-left:22px;font-size:0.9rem;">
+        <li>Recupera el documento <em>Plan de pruebas — UD1</em>.</li>
+        <li>Añade una sección final titulada <em>Copias de seguridad</em>.</li>
+        <li>Indica: tipo de copia realizada, fecha, ubicaciones (regla 3-2-1) y resultado de la restauración de prueba.</li>
+        <li>Añade una conclusión de cinco líneas sobre la importancia de las pruebas y las copias.</li>
+        <li>Convierte el documento a PDF y súbelo a Moodle Centros en la tarea «Práctica 6 — Entrega final UD1».</li>
+      </ol>
+      <div style="background:#e8f5e9;border-left:5px solid #43A047;border-radius:0 8px 8px 0;padding:10px 16px;margin-bottom:8px;font-size:0.88rem;color:#1b5e20;"><strong>✅ PC 6.</strong> El PDF final está entregado en Moodle Centros e incluye la tabla de pruebas, la sección de copias y la conclusión.</div>
+    </div>
+
+    <div style="background:#fdecea;border-left:5px solid #C62828;border-radius:0 9px 9px 0;padding:14px 18px;font-size:0.88rem;color:#7a1c1c;margin-top:18px;">
+      <strong>⚠️ Errores comunes</strong>
+      <ul style="margin:8px 0 0;padding-left:20px;">
+        <li><strong>La copia no incluye la base de datos:</strong> al configurar el plugin, marca siempre las dos casillas (archivos y base de datos).</li>
+        <li><strong>«Ha fallado la restauración»:</strong> el archivo de copia está corrupto o incompleto. Descarga de nuevo la copia y verifica su tamaño.</li>
+        <li><strong>Los enlaces dan error 404 tras cambiar los enlaces permanentes:</strong> vuelve a <em>Ajustes &gt; Enlaces permanentes</em> y pulsa «Guardar cambios» para regenerar las reglas.</li>
+        <li><strong>No hay espacio en disco:</strong> guarda los respaldos en una unidad externa, nunca solo en el propio servidor.</li>
+        <li><strong>Se restauró una copia antigua por error:</strong> conserva siempre varias copias fechadas para poder elegir.</li>
+      </ul>
+    </div>
+
+    <details style="margin-top:22px;border:1px solid #ffe0b2;border-radius:10px;overflow:hidden;background:#fffdf8;">
+      <summary style="cursor:pointer;background:#fff3e0;color:#8a4a00;padding:14px 20px;font-weight:800;font-size:0.92rem;list-style:none;">📎 Anexo A · Plantilla del plan de pruebas</summary>
+      <div style="padding:20px 24px;">
+        <p style="margin:0 0 12px;font-size:0.88rem;">Copia esta tabla en tu documento «Plan de pruebas — UD1» y rellénala durante el Paso 2.</p>
+        <div style="overflow-x:auto;">
+          <table style="width:100%;font-size:0.82rem;">
+            <thead>
+              <tr>
+                <th style="background:#FB8C00;color:#fff;padding:9px 11px;border:1px solid #d97700;text-align:left;">Elemento comprobado</th>
+                <th style="background:#FB8C00;color:#fff;padding:9px 11px;border:1px solid #d97700;text-align:center;width:14%;">Resultado (OK/Fallo)</th>
+                <th style="background:#FB8C00;color:#fff;padding:9px 11px;border:1px solid #d97700;text-align:left;width:32%;">Observaciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background:#fffaf3;"><td style="padding:9px 11px;border:1px solid #ffe0b2;">Acceso al panel de administración</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td></tr>
+              <tr style="background:#fff3e0;"><td style="padding:9px 11px;border:1px solid #ffe0b2;">Creación y publicación de contenido</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td></tr>
+              <tr style="background:#fffaf3;"><td style="padding:9px 11px;border:1px solid #ffe0b2;">Navegación por menús</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td></tr>
+              <tr style="background:#fff3e0;"><td style="padding:9px 11px;border:1px solid #ffe0b2;">Formularios</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td></tr>
+              <tr style="background:#fffaf3;"><td style="padding:9px 11px;border:1px solid #ffe0b2;">Foro</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td></tr>
+              <tr style="background:#fff3e0;"><td style="padding:9px 11px;border:1px solid #ffe0b2;">Subida de archivos</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td></tr>
+              <tr style="background:#fffaf3;"><td style="padding:9px 11px;border:1px solid #ffe0b2;">Enlaces permanentes</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td></tr>
+              <tr style="background:#fff3e0;"><td style="padding:9px 11px;border:1px solid #ffe0b2;">Respuesta en móvil</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </details>
+
+    <details style="margin-top:14px;border:1px solid #ffe0b2;border-radius:10px;overflow:hidden;background:#fffdf8;">
+      <summary style="cursor:pointer;background:#fff3e0;color:#8a4a00;padding:14px 20px;font-weight:800;font-size:0.92rem;list-style:none;">📎 Anexo B · Código facilitado: copias con mysqldump y tar</summary>
+      <div style="padding:20px 24px;">
+        <p style="margin:0 0 12px;font-size:0.88rem;">Comandos alternativos para hacer copias desde la terminal (Linux).</p>
+        <div style="background:#2b2b2b;color:#e8d9a8;font-family:Consolas,'Courier New',monospace;font-size:0.74rem;font-weight:700;padding:5px 12px;border-radius:8px 8px 0 0;display:inline-block;">terminal</div>
+        <pre style="background:#1a1a1a;color:#f0e6d2;padding:15px 18px;border-radius:0 10px 10px 10px;overflow-x:auto;font-family:Consolas,'Courier New',monospace;font-size:0.8rem;line-height:1.55;margin:0;"># Copia completa de la base de datos del CMS
+mysqldump -u root -p nombre_base_datos &gt; backup_ud1_2026-10-12.sql
+
+# Restauración de la copia
+mysql -u root -p nombre_base_datos &lt; backup_ud1_2026-10-12.sql
+
+# Copia de los archivos del sitio (Linux)
+tar -czvf backup_archivos_ud1.tar.gz /var/www/html/wordpress</pre>
+      </div>
+    </details>
+
+    <details style="margin-top:14px;border:1px solid #ffe0b2;border-radius:10px;overflow:hidden;background:#fffdf8;">
+      <summary style="cursor:pointer;background:#fff3e0;color:#8a4a00;padding:14px 20px;font-weight:800;font-size:0.92rem;list-style:none;">📎 Anexo C · Plantilla de registro de copias de seguridad (regla 3-2-1)</summary>
+      <div style="padding:20px 24px;">
+        <div style="overflow-x:auto;">
+          <table style="width:100%;font-size:0.82rem;">
+            <thead>
+              <tr>
+                <th style="background:#FB8C00;color:#fff;padding:9px 11px;border:1px solid #d97700;text-align:left;">Copia</th>
+                <th style="background:#FB8C00;color:#fff;padding:9px 11px;border:1px solid #d97700;text-align:left;">Fecha</th>
+                <th style="background:#FB8C00;color:#fff;padding:9px 11px;border:1px solid #d97700;text-align:left;">Soporte</th>
+                <th style="background:#FB8C00;color:#fff;padding:9px 11px;border:1px solid #d97700;text-align:left;">Ubicación</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background:#fffaf3;"><td style="padding:9px 11px;border:1px solid #ffe0b2;font-weight:700;">Copia 1 (servidor)</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td></tr>
+              <tr style="background:#fff3e0;"><td style="padding:9px 11px;border:1px solid #ffe0b2;font-weight:700;">Copia 2 (USB)</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td></tr>
+              <tr style="background:#fffaf3;"><td style="padding:9px 11px;border:1px solid #ffe0b2;font-weight:700;">Copia 3 (nube / fuera)</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td><td style="padding:9px 11px;border:1px solid #ffe0b2;">&nbsp;</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </details>
+
+    <div style="margin-top:22px;border:2px solid #FB8C0020;border-radius:10px;padding:16px 20px;background:#fffdf8;">
+      <strong style="color:#b35900;font-size:0.95rem;">📎 El documento debe contener</strong>
+      <ul style="margin:8px 0 0;padding-left:20px;font-size:0.9rem;">
+        <li>Las tres respuestas de la lectura de arranque.</li>
+        <li>Plan de pruebas con las 8 comprobaciones y su resultado (Anexo A).</li>
+        <li>Registro de copias según la regla 3-2-1 (Anexo C).</li>
+        <li>Capturas del plugin de copias y de la restauración correcta.</li>
+        <li>Conclusión de 5 líneas sobre la importancia de probar y respaldar.</li>
+      </ul>
+    </div>
+
+    <div style="margin-top:26px;border-top:4px solid #FB8C00;padding-top:18px;">
+      <h4 style="margin:0 0 4px;color:#b35900;font-size:1rem;">📊 Rúbrica · Práctica 6</h4>
+      <p style="margin:0 0 12px;font-size:0.82rem;color:#5a7184;">Tres ítems a partes iguales. Nota mínima: 5/10.</p>
+      <div style="overflow-x:auto;">
+        <table style="width:100%;font-size:0.76rem;">
+          <thead>
+            <tr>
+              <th style="background:#FB8C00;color:#fff;padding:8px;border:1px solid #d97700;text-align:left;">Aspecto</th>
+              <th style="background:#FB8C00;color:#fff;padding:8px;border:1px solid #d97700;text-align:center;width:7%;">Peso</th>
+              <th style="background:#43A047;color:#fff;padding:8px;border:1px solid #d97700;">Nivel experto (9–10)</th>
+              <th style="background:#7CB342;color:#fff;padding:8px;border:1px solid #d97700;">Nivel avanzado (7–8)</th>
+              <th style="background:#FBC02D;color:#fff;padding:8px;border:1px solid #d97700;">Nivel suficiente (5–6)</th>
+              <th style="background:#F4511E;color:#fff;padding:8px;border:1px solid #d97700;">Nivel inicial (3–4)</th>
+              <th style="background:#C62828;color:#fff;padding:8px;border:1px solid #d97700;">Nivel no alcanzado (0–2)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#fffaf3;">
+              <td style="padding:8px;border:1px solid #ffe0b2;font-weight:700;">Ejecución técnica del procedimiento</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;text-align:center;font-weight:700;">33%</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Ejecuta las 8 pruebas, hace la copia completa y demuestra la restauración sin ayuda.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Ejecuta todo con alguna consulta puntual.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Completa con apoyo del docente.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Copia incompleta o restauración no verificada.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">No realiza pruebas ni copia.</td>
+            </tr>
+            <tr style="background:#fff3e0;">
+              <td style="padding:8px;border:1px solid #ffe0b2;font-weight:700;">Documentación, evidencias y respuestas de la lectura</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;text-align:center;font-weight:700;">33%</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Tabla completa, registro 3-2-1 bien rellenado y respuestas ricas.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Casi todas las evidencias; respuestas correctas.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Evidencias incompletas o respuestas breves.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Faltan capturas y varias respuestas.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">No documenta ni responde.</td>
+            </tr>
+            <tr style="background:#fffaf3;">
+              <td style="padding:8px;border:1px solid #ffe0b2;font-weight:700;">Justificación, autonomía y reflexión</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;text-align:center;font-weight:700;">34%</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Relaciona pruebas y respaldos con la continuidad del servicio con criterio profesional.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Justificación correcta y bien redactada.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Justificación básica o poco argumentada.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">Justificación muy pobre.</td>
+              <td style="padding:8px;border:1px solid #ffe0b2;">No hay justificación.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</details>
+
+<!-- ══════════════ PIE ══════════════ -->
+<footer style="background:linear-gradient(135deg,#FB8C00,#d97700);color:#fff;text-align:center;padding:28px 20px;font-size:0.84rem;margin-top:40px;border-radius:20px 20px 0 0;">
+  <p style="margin:0 0 6px;"><strong>IES Vega del Guadalete</strong> — La Barca de la Florida (Cádiz)</p>
+  <p style="margin:0 0 6px;">Módulo: <strong>Aplicaciones Web (0228)</strong> · 2º Curso del Ciclo Formativo de Grado Medio en Sistemas Microinformáticos y Redes</p>
+  <p style="margin:0 0 6px;">UD1 · Gestores de contenidos · RA1 · Criterios de evaluación a) a k)</p>
+  <p style="margin:0;">Curso académico 2026–2027 · Dpto. Informática · Plataforma: Moodle Centros</p>
+</footer>
+
+</div>
+
+</body>
+</html>
