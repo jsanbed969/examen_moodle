@@ -21,6 +21,7 @@ Todo el procesamiento ocurre en el navegador: no hay servidor, no se suben archi
 - **Las preguntas generadas** se relacionan siempre con las prácticas y sus pasos del cuaderno importado, por lo que el examen resultante es de tipo ensayo.
 - **Importación/exportación JSON** de todo el proyecto: fuente analizada, configuración, banco y selección.
 - **Exportación XML** compatible con la importación de preguntas de Moodle, con categoría, vista previa, copia y descarga.
+- **Exportación ODT**: rellena `plantilla_examen.odt` con los datos del examen (ciclo, módulo, RA, criterios) y las preguntas seleccionadas, incluyendo un apartado «Consideraciones» y la lista de criterios; descarga el documento listo para imprimir o editar.
 - **Datos curriculares desde `ciclos_db.json`**: selecciona ciclo formativo, módulo profesional y resultado de aprendizaje (RA); los criterios de evaluación se cargan automáticamente desde la base de datos.
 - **Detección automática del módulo y RA**: al importar un cuaderno, la aplicación intenta localizar el ciclo, el módulo y el RA por el código y los nombres del documento.
 - **Tema oscuro por defecto**, con conmutador a tema claro; la preferencia se guarda en el navegador.
@@ -42,7 +43,7 @@ Después abre <http://localhost:8000> en el navegador.
 1. **Fuente**: arrastra un archivo HTML con el formato de `practicas.html`, selecciónalo o pulsa «Cargar `practicas.html` de ejemplo».
 2. **Examen**: revisa la información detectada, elige el ciclo, el módulo y el RA (o cámbialos), ajusta el número de preguntas, los criterios y los tipos de pregunta; pulsa «Generar selección de preguntas».
 3. **Preguntas**: revisa y ajusta el banco. Puedes marcar o desmarcar preguntas de la selección, crear nuevas, editar, duplicar o eliminar.
-4. **Exportar**: descarga el XML para importarlo en Moodle o guarda el JSON para continuar más tarde.
+4. **Exportar**: descarga el XML para importarlo en Moodle, el ODT relleno a partir de `plantilla_examen.odt` o guarda el JSON para continuar más tarde.
 
 ### Datos curriculares: `ciclos_db.json`
 
@@ -75,6 +76,7 @@ js/parser.js            Análisis del cuaderno de prácticas HTML
 js/generator.js         Generación del banco y selección del examen
 js/curriculum.js        Carga y normalización de ciclos, módulos, RA y criterios
 js/moodle-xml.js        Exportador al formato XML de Moodle
+js/odt.js               Generador del ODT relleno a partir de plantilla_examen.odt
 js/store.js             Persistencia, normalización e importación/exportación JSON
 js/app.js               Lógica de la interfaz y eventos
 ciclos_db.json          Base de datos de ciclos, módulos, RA y criterios
@@ -94,6 +96,7 @@ index.html
 assets/
 js/
 ciclos_db.json
+plantilla_examen.odt
 ```
 
 `practicas.html` solo es necesario si quieres usar el botón de ejemplo. El resto de archivos (`pregunta_examen.xml`, `examen_ejemplo.html`, `README.md`) son de referencia y no se necesitan en producción.

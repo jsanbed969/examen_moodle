@@ -1701,6 +1701,24 @@
     }
   }
 
+  function downloadOdt() {
+    const selected = selectedQuestions();
+    if (!selected.length) {
+      toast('No hay preguntas seleccionadas. Genera el examen primero.', 'error');
+      return;
+    }
+    const EB = window.ExamBuilder || {};
+    if (!EB.Odt) {
+      toast('No se pudo cargar el módulo ODT.', 'error');
+      return;
+    }
+    EB.Odt.fillAndDownload(state).then(function () {
+      toast('ODT descargado.', 'success');
+    }).catch(function (error) {
+      toast(error && error.message ? error.message : 'No se pudo generar el ODT.', 'error');
+    });
+  }
+
   function downloadJson() {
     if (Curriculum && Curriculum.isLoaded() && state.exam.raNumbers && state.exam.raNumbers.length) {
       syncExamRaState();
@@ -1839,6 +1857,7 @@
     });
 
     $('#btnDownloadXml').addEventListener('click', downloadXml);
+    $('#btnDownloadOdt').addEventListener('click', downloadOdt);
     $('#btnPreviewXml').addEventListener('click', updateXmlPreview);
     $('#btnCopyXml').addEventListener('click', copyXml);
 
