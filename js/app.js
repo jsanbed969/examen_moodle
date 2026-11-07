@@ -1701,7 +1701,7 @@
     }
   }
 
-  function downloadOdt() {
+  async function downloadOdt() {
     const selected = selectedQuestions();
     if (!selected.length) {
       toast('No hay preguntas seleccionadas. Genera el examen primero.', 'error');
@@ -1712,11 +1712,13 @@
       toast('No se pudo cargar el módulo ODT.', 'error');
       return;
     }
-    EB.Odt.fillAndDownload(state).then(function () {
-      toast('ODT descargado.', 'success');
-    }).catch(function (error) {
+    try {
+      await EB.Odt.fillAndDownload(state);
+      await EB.Odt.fillAndDownload(state, { teacher: true });
+      toast('ODT descargados (alumno y corrección).', 'success');
+    } catch (error) {
       toast(error && error.message ? error.message : 'No se pudo generar el ODT.', 'error');
-    });
+    }
   }
 
   function downloadJson() {

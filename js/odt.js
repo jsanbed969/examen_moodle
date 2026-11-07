@@ -206,7 +206,8 @@
     return (state.exam.selectedIds || []).map(function (id) { return byId[id]; }).filter(Boolean);
   }
 
-  function questionToOdt(question, index) {
+  function questionToOdt(question, index, options) {
+    options = options || {};
     const lines = [];
     const cleanTitle = String(question.title || 'Pregunta')
       .replace(/^P\d+\s*·\s*/i, '')
@@ -221,11 +222,13 @@
       lines.push('<text:p text:style-name="Text_20_body">' + escapeXml(question.text) + '</text:p>');
     }
     if (question.type === 'multichoice') {
-      const options = (question.options || []).filter(function (option) {
+      const optionList = (question.options || []).filter(function (option) {
         return option && String(option.text || '').trim();
       });
-      options.forEach(function (option, i) {
-        lines.push('<text:p text:style-name="List">' + escapeXml(String.fromCharCode(97 + i) + ') ' + option.text) + '</text:p>');
+      const isTeacher = !!(options && options.teacher);
+      optionList.forEach(function (option, i) {
+        const mark = (option.correct && isTeacher) ? '  (correcta)' : '';
+        lines.push('<text:p text:style-name="List">' + escapeXml(String.fromCharCode(97 + i) + ') ' + option.text + mark) + '</text:p>');
       });
     } else if (question.type === 'truefalse') {
       lines.push('<text:p text:style-name="List">a) Verdadero</text:p>');
@@ -239,17 +242,49 @@
     } else if (question.type === 'essay') {
       /* Sin huecos de respuesta */
     }
+    if (options && options.teacher) {
+      const fb = question.generalFeedback && String(question.generalFeedback).trim();
+      if (fb) {
+        lines.push('<text:p text:style-name="Text_20_body"><text:span text:style-name="BoldLabel">Retroalimentación:</text:span> ' + escapeXml(fb) + '</text:p>');
+      }
+      if (question.type === 'essay' && question.essay && question.essay.graderInfo) {
+        lines.push('<text:p text:style-name="Text_20_body"><text:span text:style-name="BoldLabel">Criterios de corrección:</text:span> ' + escapeXml(question.essay.graderInfo) + '</text:p>');
+      }
+      if (question.type === 'multichoice' || question.type === 'truefalse' || question.type === 'shortanswer' || question.type === 'matching') {
+        // include correct answer summary for teacher
+        if (question.type === 'truefalse') {
+          lines.push('<text:p text:style-name="Text_20_body"><text:span text:style-name="BoldLabel">Respuesta correcta:</text:span> ' + (question.trueAnswer === false ? 'Falso' : 'Verdadero') + '</text:p>');
+        }
+        if (question.type === 'shortanswer' && question.answers && question.answers.length) {
+          lines.push('<text:p text:style-name="Text_20_body"><text:span text:style-name="BoldLabel">Respuestas aceptadas:</text:span> ' + escapeXml(question.answers.join(', ')) + '</text:p>');
+        }
+        if (question.type === 'matching' && question.matchingPairs && question.matchingPairs.length) {
+          lines.push('<text:p text:style-name="Text_20_body"><text:span text:style-name="BoldLabel">Parejas correctas:</text:span></text:p>');
+          question.matchingPairs.forEach(function (pair) {
+            lines.push('<text:p text:style-name="List">' + escapeXml(pair.left + ' → ' + pair.right) + '</text:p>');
+          });
+        }
+      }
+    }
     lines.push('<text:p text:style-name="Text_20_body"></text:p>');
-    return lines.join('\n');
+    return lines.join('\\n');
   }
 
-  function buildContentXml(originalContentXml, state) {
+  function buildContentXml(originalContentXml, state, options) {
+    options = options || {};
     const questions = selectedQuestions(state);
     const exam = state.exam || {};
 
     const extraStyles =
       '<style:style style:name="BoldLabel" style:family="text"><style:text-properties fo:font-weight="bold"/></style:style>' +
       '<style:style style:name="SmallText" style:family="text"><style:text-properties fo:font-size="9pt"/></style:style>' +
+      '<style:style style:name="BlockFirst" style:family="paragraph" style:parent-style-name="Text_20_body"><style:paragraph-properties fo:margin-top="0.5cm" fo:margin-bottom="0.0cm" fo:line-height="100%"/><style:text-properties fo:font-size="9pt"/></style:style>' +
+      '<style:style style:name="BlockRA" style:family="paragraph" style:parent-style-name="Text_20_body"><style:paragraph-properties fo:margin-top="0.4cm" fo:margin-bottom="0.0cm" fo:line-height="100%"/><style:text-properties fo:font-size="9pt"/></style:style>' +
+      '<style:style style:name="BlockCrit" style:family="paragraph" style:parent-style-name="Text_20_body"><style:paragraph-properties fo:margin-top="0.4cm" fo:margin-bottom="0.0cm" fo:line-height="100%"/><style:text-properties fo:font-size="9pt"/></style:style>' +
+      '<style:style style:name="Spacer05" style:family="paragraph" style:parent-style-name="Text_20_body"><style:paragraph-properties fo:margin-top="0.5cm" fo:margin-bottom="0.0cm" fo:line-height="100%"/><style:text-properties fo:font-size="14pt"/></style:style>' +
+      '<style:style style:name="Spacer04" style:family="paragraph" style:parent-style-name="Text_20_body"><style:paragraph-properties fo:margin-top="0.4cm" fo:margin-bottom="0.0cm" fo:line-height="100%"/><style:text-properties fo:font-size="11pt"/></style:style>' +
+      '<style:style style:name="BlockRest" style:family="paragraph" style:parent-style-name="Text_20_body"><style:paragraph-properties fo:margin-top="0.0cm" fo:margin-bottom="0.0cm" fo:line-height="100%"/><style:text-properties fo:font-size="9pt"/></style:style>' +
+      '<style:style style:name="Spacer" style:family="paragraph" style:parent-style-name="Text_20_body"><style:paragraph-properties fo:margin-top="0.5cm" fo:margin-bottom="0cm" fo:line-height="100%"/><style:text-properties fo:font-size="8pt"/></style:style>' +
       '<text:list-style style:name="CritList">' +
         '<text:list-level-style-number text:level="1" style:num-format="a" text:display-levels="1">' +
           '<style:list-level-properties text:list-level-position-and-space-mode="label-alignment">' +
@@ -293,31 +328,37 @@
       }
     }
     if (summaryParts.length) {
-      // Ciclo y módulo
-      if (exam.cycleName || exam.moduleName || exam.moduleCode) {
-        bodyParts.push('<text:p text:style-name="Text_20_body">' +
-          '<text:span text:style-name="BoldLabel">Ciclo formativo:</text:span> ' + escapeXml(exam.cycleName || '') +
-          '<text:line-break/>' +
-          '<text:span text:style-name="BoldLabel">Módulo profesional:</text:span> ' + escapeXml((exam.moduleName || '') + (exam.moduleCode ? ' (' + exam.moduleCode + ')' : '')) +
+      // Bloque compacto: ciclo y módulo
+      const block1 = [];
+      if (exam.cycleName) block1.push('Ciclo formativo: ' + (exam.cycleName || ''));
+      if (exam.moduleName || exam.moduleCode) {
+        block1.push('Módulo profesional: ' + (exam.moduleName || '') + (exam.moduleCode ? ' (' + exam.moduleCode + ')' : ''));
+      }
+      if (block1.length) {
+        bodyParts.push('<text:p text:style-name="BlockFirst">' +
+          block1.map(function (line) {
+            return '<text:span text:style-name="BoldLabel">' + escapeXml(line.split(':')[0] + ':') + '</text:span> ' + escapeXml(line.split(':').slice(1).join(':').trim());
+          }).join('<text:line-break/>') +
           '</text:p>');
       }
-      // RA
+
+      // Bloque RA con más espacio superior
+      const raLines = [];
       if (selectedRas.length) {
-        bodyParts.push('<text:p text:style-name="Text_20_body">' +
-          '<text:span text:style-name="BoldLabel">Resultados de aprendizaje que se trabajan:</text:span>' +
-          '</text:p>');
         selectedRas.forEach(function (item) {
-          bodyParts.push('<text:p text:style-name="Text_20_body">' +
-            '<text:span text:style-name="SmallText">' + escapeXml(item.raDisplay + (item.raText ? ': ' + item.raText : '')) + '</text:span>' +
-            '</text:p>');
+          raLines.push((item.raDisplay || 'RA' + item.raNumber) + ': ' + (item.raText || ''));
         });
       } else if (exam.ra) {
-        bodyParts.push('<text:p text:style-name="Text_20_body">' +
-          '<text:span text:style-name="BoldLabel">Resultado de aprendizaje:</text:span> ' +
-          '<text:span text:style-name="SmallText">' + escapeXml(exam.ra + (exam.raText ? ': ' + exam.raText : '')) + '</text:span>' +
-          '</text:p>');
+        raLines.push(exam.ra + (exam.raText ? ': ' + exam.raText : ''));
       }
-      // Criterios en enumerado
+      if (raLines.length) {
+        bodyParts.push('<text:p text:style-name="BlockRA"><text:span text:style-name="BoldLabel">Resultados de aprendizaje que se trabajan:</text:span></text:p>');
+        raLines.forEach(function (line) {
+          bodyParts.push('<text:p text:style-name="BlockRest"><text:span text:style-name="SmallText">' + escapeXml(line) + '</text:span></text:p>');
+        });
+      }
+
+      // Bloque criterios tal y como están
       const criteriaLines = [];
       if (selectedRas.length) {
         selectedRas.forEach(function (item) {
@@ -331,18 +372,12 @@
         });
       }
       if (criteriaLines.length) {
-        bodyParts.push('<text:p text:style-name="Text_20_body">' +
-          '<text:span text:style-name="BoldLabel">Criterios de evaluación:</text:span>' +
-          '</text:p>');
-        criteriaLines.forEach(function (line, index) {
-          bodyParts.push('<text:p text:style-name="Text_20_body">' +
-            '<text:span text:style-name="SmallText">' + escapeXml(line) + '</text:span>' +
-            '</text:p>');
+        bodyParts.push('<text:p text:style-name="BlockCrit"><text:span text:style-name="BoldLabel">Criterios de evaluación:</text:span></text:p>');
+        criteriaLines.forEach(function (line) {
+          bodyParts.push('<text:p text:style-name="BlockRest"><text:span text:style-name="SmallText">' + escapeXml(line) + '</text:span></text:p>');
         });
       }
-      bodyParts.push('<text:p text:style-name="Text_20_body"></text:p>');
     }
-
     bodyParts.push('<text:h text:style-name="Heading" text:outline-level="1">Consideraciones</text:h>');
     const considerationText = exam.description && String(exam.description).trim()
       ? exam.description
@@ -358,7 +393,7 @@
       bodyParts.push('<text:p text:style-name="Text_20_body">No hay preguntas seleccionadas.</text:p>');
     } else {
       questions.forEach(function (question, index) {
-        bodyParts.push(questionToOdt(question, index));
+        bodyParts.push(questionToOdt(question, index, options));
       });
     }
 
@@ -414,7 +449,8 @@
     return result;
   }
 
-  async function fillAndDownload(state) {
+  async function fillAndDownload(state, options) {
+    options = options || {};
     if (!state || !(state.exam && state.exam.selectedIds && state.exam.selectedIds.length)) {
       throw new Error('No hay preguntas seleccionadas.');
     }
@@ -434,7 +470,7 @@
       }
       if (entry.name === 'content.xml') {
         const text = new TextDecoder('utf-8').decode(entry.data);
-        const replaced = buildContentXml(text, state);
+        const replaced = buildContentXml(text, state, options);
         return { name: entry.name, data: new TextEncoder().encode(replaced) };
       }
       return { name: entry.name, data: entry.data };
@@ -445,7 +481,9 @@
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    const name = (Util.slug(state.exam.fileName || state.exam.title, 'examen') || 'examen') + '.odt';
+    const baseName = (Util.slug(state.exam.fileName || state.exam.title, 'examen') || 'examen');
+    const suffix = options.teacher ? '-correccion' : '';
+    const name = baseName + suffix + '.odt';
     link.download = name;
     document.body.appendChild(link);
     link.click();
